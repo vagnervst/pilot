@@ -15,4 +15,17 @@ export default {
     path: '/transactions/:id',
     exact: true,
   },
+  configurations: {
+    title: 'Configurations',
+    path: '/configurations',
+    icon: Transaction32,
+    subRoute: [
+      {
+        title: 'general',
+        path: '/general',
+        component: Transactions,
+        icon: Transaction32,
+      },
+    ],
+  },
 }

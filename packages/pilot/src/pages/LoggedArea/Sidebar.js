@@ -1,5 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {
+  values,
+} from 'ramda'
 
 import { withRouter } from 'react-router-dom'
 
@@ -16,7 +19,7 @@ const SidebarState = ({
 }) => (
   <Sidebar
     logo={Logo}
-    links={Object.values(routes).filter(r => r.component).map(route => ({
+    links={values(routes).filter(r => r.component).map(route => ({
         ...route,
         title: t(route.title),
     }))}

@@ -20,13 +20,27 @@ const enhanced = compose(
   withRouter
 )
 
+const subRoutes = (parentPath, subRoute) => (
+  <Switch>
+    {subRoute.map(({ path, component }) => (
+      <Route
+        component={component}
+        key={`${parentPath}${path}`}
+        path={`${parentPath}${path}`}
+      />
+    ))}
+  </Switch>
+)
+
 const LoggedArea = ({ t }) => (
   <Layout
     sidebar={<Sidebar t={t} />}
     header={<Header t={t} />}
   >
     <Switch>
-      {Object.values(routes).map(({ component, path }) => (
+      {Object.values(routes).map(({ component, path, subRoute }) => (
+        (subRoute && subRoute.length > 0) ?
+        subRoutes(path, subRoute) :
         <Route
           key={path}
           path={path}
