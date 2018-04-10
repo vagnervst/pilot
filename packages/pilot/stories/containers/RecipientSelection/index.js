@@ -13,7 +13,7 @@ const recipients = [
       agency: '21312',
       bank_code: '341',
       id: 'ba_ciuv0j420r84f',
-      legal_name: 'nome do banco',
+      legal_name: 'nome do titular',
       type: 'conta_corrente',
     },
   },
@@ -24,7 +24,7 @@ const recipients = [
       agency: '21312',
       bank_code: '341',
       id: 'ba_ciuv0j420r84f',
-      legal_name: 'nome do banco',
+      legal_name: 'nome do titular',
       type: 'conta_corrente',
     },
   },
@@ -35,7 +35,7 @@ const recipients = [
       agency: '21312',
       bank_code: '341',
       id: 'ba_ciuv0j420r84f',
-      legal_name: 'nome do banco',
+      legal_name: 'nome do titular',
       type: 'conta_corrente',
     },
   },
@@ -46,7 +46,7 @@ const recipients = [
       agency: '21312',
       bank_code: '341',
       id: 'ba_ciuv0j420r84f',
-      legal_name: 'nome do banco',
+      legal_name: 'nome do titular',
       type: 'conta_corrente',
     },
   },
@@ -60,15 +60,12 @@ const pagination = {
 const RecipientSelectionExample = () => (
   <Section>
     <RecipientSelection
-      currentPage={1}
-      ofLabel="de"
       onPageChange={action('page-change')}
       onSearch={action('search')}
       onSelect={action('recipient-selection')}
       pagination={pagination}
       recipients={recipients}
-      searchLabel="Buscar"
-      searchPlaceholder="Filtre por nome ou razão social"
+      t={t => t}
     />
   </Section>
 )

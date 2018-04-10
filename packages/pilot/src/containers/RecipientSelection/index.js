@@ -11,18 +11,25 @@ import {
   Table,
 } from 'former-kit'
 
+import getColumnTranslator from '../../formatters/columnTranslator'
 import getRecipientSelectionColumns from './recipientSelectionColumns'
 import style from './style.css'
 
 class RecipientSelection extends Component {
   constructor (props) {
     super(props)
-    this.state = {
-      search: '',
-    }
+    const { t } = this.props
+
+    const columnsTranslator = getColumnTranslator(t)
 
     this.handleSearchFieldChange = this.handleSearchFieldChange.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
+    this.renderSelectColumn = this.renderSelectColumn.bind(this)
+
+    this.state = {
+      search: '',
+      columns: columnsTranslator(getRecipientSelectionColumns(t, this.renderSelectColumn)),
+    }
   }
 
   handleSearchFieldChange (event) {
@@ -35,17 +42,30 @@ class RecipientSelection extends Component {
     this.props.onSearch(this.state.search)
   }
 
+  renderSelectColumn (item) {
+    const { onSelect, t } = this.props
+
+    return (
+      <Button
+        fill="outline"
+        onClick={() => onSelect(item)}
+      >
+        {t('select')}
+      </Button>
+    )
+  }
   render () {
     const {
-      ofLabel,
       onPageChange,
-      onSelect,
       pagination,
-      searchPlaceholder,
       recipients,
+      t,
     } = this.props
 
-    const { search } = this.state
+    const {
+      search,
+      columns,
+    } = this.state
 
     return (
       <Grid>
@@ -54,7 +74,7 @@ class RecipientSelection extends Component {
             <Input
               className={style.search}
               onChange={this.handleSearchFieldChange}
-              placeholder={searchPlaceholder}
+              placeholder={t('filter_by_name_or_legal_name')}
               value={search}
             />
             <Button
@@ -62,7 +82,7 @@ class RecipientSelection extends Component {
               relevance="low"
               onClick={this.handleSearch}
             >
-              {'search'}
+              {t('search')}
             </Button>
           </Col>
           <Col align="end">
@@ -71,7 +91,7 @@ class RecipientSelection extends Component {
               totalPages={pagination.total}
               onPageChange={onPageChange}
               strings={{
-                of: ofLabel,
+                of: t('of'),
               }}
             />
           </Col>
@@ -79,7 +99,7 @@ class RecipientSelection extends Component {
         <Row>
           <Col>
             <Table
-              columns={getRecipientSelectionColumns(onSelect)}
+              columns={columns}
               rows={recipients}
             />
           </Col>
@@ -90,7 +110,6 @@ class RecipientSelection extends Component {
 }
 
 RecipientSelection.propTypes = {
-  ofLabel: PropTypes.string.isRequired,
   onPageChange: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
@@ -100,16 +119,16 @@ RecipientSelection.propTypes = {
   }).isRequired,
   recipients: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
       bank_account: PropTypes.shape({
-        bank_code: PropTypes.string.isRequired,
-        agency: PropTypes.string.isRequired,
-        legal_name: PropTypes.string.isRequired,
         account: PropTypes.string.isRequired,
+        agency: PropTypes.string.isRequired,
+        bank_code: PropTypes.string.isRequired,
+        legal_name: PropTypes.string.isRequired,
       }).isRequired,
+      id: PropTypes.string.isRequired,
     })
   ).isRequired,
-  searchPlaceholder: PropTypes.string.isRequired,
+  t: PropTypes.func.isRequired,
 }
 
 export default RecipientSelection
