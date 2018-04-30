@@ -240,8 +240,8 @@ class TransactionDetails extends Component {
       }),
       totalRecipientsLabel: t('recipients.total_recipient', {
         count: recipients.length,
-      }),
-      totalTitle: t('recipients.total_amount'),
+      }).toUpperCase(),
+      totalTitle: t('recipients.total_amount').toUpperCase(),
     }
 
     const totalDisplayLabels = {
