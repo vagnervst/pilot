@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Promise from 'bluebird'
 import { connect } from 'react-redux'
 import {
+  equals,
   path,
 } from 'ramda'
 import WithdrawContainer from '../../containers/Withdraw'
@@ -33,17 +34,15 @@ const steps = [
   },
 ]
 
-const getRecipientInfo = client => id => (
-  Promise.props({
-    recipientData: client.recipients.find({ id }),
-    recipientBalance: client.balance.find({ recipientId: id }),
-  })
-)
-
 const getDefaultRecipient = client => (
   client.company.current()
     .then(path(['default_recipient_id', 'test']))
-    .then(getRecipientInfo(client))
+    .then(id => (
+      Promise.props({
+        recipientData: client.recipients.find({ id }),
+        recipientBalance: client.balance.find({ recipientId: id }),
+      })
+    ))
 )
 
 class Withdraw extends Component {
@@ -54,9 +53,12 @@ class Withdraw extends Component {
       currentStep: 0,
       balance: {},
       recipient: {},
+      recipients: [],
     }
 
     this.handleStepChange = this.handleStepChange.bind(this)
+    this.getAllRecipients = this.getAllRecipients.bind(this)
+    this.setNewRecipient = this.setNewRecipient.bind(this)
   }
 
   componentDidMount () {
@@ -67,6 +69,24 @@ class Withdraw extends Component {
           balance: recipientBalance,
         })
       ))
+  }
+
+  getAllRecipients () {
+    // TODO: check if the "recipients" request has pagination!
+    this.props.client.recipients.all()
+      .then(recipients => this.setState({ recipients }))
+  }
+
+  setNewRecipient (newRecipient) {
+    if (!equals(newRecipient, this.state.recipient)) {
+      this.props.client.balance.find({ recipientId: newRecipient.id })
+        .then(balance => (
+          this.setState({
+            balance,
+            recipient: newRecipient,
+          })
+        ))
+    }
   }
 
   handleStepChange () {
@@ -85,6 +105,7 @@ class Withdraw extends Component {
       },
       currentStep,
       recipient,
+      recipients,
     } = this.state
 
     return (
@@ -94,10 +115,12 @@ class Withdraw extends Component {
         currentStep={currentStep}
         date={new Date()}
         maximum={available ? available.amount : 0}
-        onChangeRecipient={() => {}}
+        onChangeRecipient={this.getAllRecipients}
+        onSelectNewRecipient={this.setNewRecipient}
         onStepChange={this.handleStepChange}
         onViewBalance={() => {}}
         recipient={recipient}
+        recipients={recipients}
         requested={123}
         statusMessage="success"
         stepsStatus={steps[currentStep]}

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { action } from '@storybook/addon-actions'
+import { assoc } from 'ramda'
 import Withdraw from '../../../src/containers/Withdraw'
 import Section from '../../Section'
 
 const recipient = {
   object: 'recipient',
-  id: 're_cixm61j7e00doin6de8ocgttb',
+  id: 're_1',
   transfer_enabled: true,
   last_transfer: null,
   transfer_interval: 'weekly',
@@ -37,6 +38,11 @@ const recipient = {
   },
 }
 
+const recipient2 = assoc('id', 're_2', recipient)
+const recipient3 = assoc('id', 're_3', recipient)
+
+const recipients = [recipient, recipient2, recipient3]
+
 const steps = [
   {
     data: 'first',
@@ -56,9 +62,11 @@ class WithdrawState extends Component {
 
     this.state = {
       step: 0,
+      selectedRecipient: recipient,
     }
 
     this.handleStepChange = this.handleStepChange.bind(this)
+    this.handleSelectNewRecipient = this.handleSelectNewRecipient.bind(this)
   }
 
   handleStepChange () {
@@ -67,6 +75,12 @@ class WithdrawState extends Component {
         step: this.state.step + 1,
       })
     }
+  }
+
+  handleSelectNewRecipient (re) {
+    this.setState({
+      selectedRecipient: re,
+    })
   }
 
   render () {
@@ -79,9 +93,11 @@ class WithdrawState extends Component {
           date={new Date()}
           maximum={74120}
           onChangeRecipient={action('change recipient')}
+          onSelectNewRecipient={this.handleSelectNewRecipient}
           onStepChange={this.handleStepChange}
           onViewBalance={action('view balance')}
-          recipient={recipient}
+          recipient={this.state.selectedRecipient}
+          recipients={recipients}
           requested={123}
           statusMessage="success"
           stepsStatus={steps[this.state.step]}

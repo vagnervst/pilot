@@ -5,23 +5,45 @@ class WithdrawContainer extends Component {
   constructor (props) {
     super(props)
 
-    this.teste = this.teste.bind(this)
+    this.state = {
+      showRecipients: false,
+    }
+
+    this.handleChangeRecipient = this.handleChangeRecipient.bind(this)
+    this.handleSelectNewRecipient = this.handleSelectNewRecipient.bind(this)
   }
 
-  teste () {
-    console.log(this.props.amount)
+  handleChangeRecipient () {
+    if (this.state.showRecipients) {
+      this.setState({
+        showRecipients: false,
+      })
+    } else {
+      this.setState({
+        showRecipients: true,
+      })
+
+      this.props.onChangeRecipient()
+    }
+  }
+
+  handleSelectNewRecipient (recipient) {
+    this.props.onSelectNewRecipient(recipient)
+
+    this.setState({
+      showRecipients: false,
+    })
   }
 
   render () {
-    console.log(this.props.recipient)
     return (
       <div>
         <p>Amount {this.props.amount}</p>
+        <p>Id {this.props.recipient.id}</p>
         <p>Available {this.props.available}</p>
         <p>Current step {this.props.currentStep}</p>
         <p>Date {this.props.date.toISOString()}</p>
         <p>Maximum {this.props.maximum}</p>
-        <button onClick={this.props.onChangeRecipient}>Aaa</button>
         <button onClick={this.props.onViewBalance}>Bbb</button>
         <button onClick={this.props.onStepChange}>Change step</button>
         <p>Requested {this.props.requested}</p>
@@ -31,6 +53,21 @@ class WithdrawContainer extends Component {
         <p>{this.props.stepsStatus.data}</p>
         <p>{this.props.stepsStatus.confirmation}</p>
         <p>{this.props.stepsStatus.result}</p>
+
+        <button onClick={this.handleChangeRecipient}>Aaa</button>
+
+        {this.state.showRecipients &&
+          <div>
+            {this.props.recipients.map(re => (
+              <button
+                key={re.id}
+                onClick={() => this.handleSelectNewRecipient(re)}
+              >
+                {re.id}
+              </button>
+            ))}
+          </div>
+        }
       </div>
     )
   }
@@ -43,9 +80,13 @@ WithdrawContainer.propTypes = {
   date: PropTypes.instanceOf(Date).isRequired,
   maximum: PropTypes.number.isRequired,
   onChangeRecipient: PropTypes.func.isRequired,
+  onSelectNewRecipient: PropTypes.func.isRequired,
   onStepChange: PropTypes.func.isRequired,
   onViewBalance: PropTypes.func.isRequired,
-  recipient: PropTypes.shape({}).isRequired,
+  recipient: PropTypes.shape({
+    id: PropTypes.string,
+  }).isRequired,
+  recipients: PropTypes.arrayOf(PropTypes.shape({})),
   requested: PropTypes.number.isRequired,
   statusMessage: PropTypes.string.isRequired,
   stepsStatus: PropTypes.shape({
@@ -55,6 +96,10 @@ WithdrawContainer.propTypes = {
   }).isRequired,
   transferCost: PropTypes.number.isRequired,
   transferred: PropTypes.number.isRequired,
+}
+
+WithdrawContainer.defaultProps = {
+  recipients: [],
 }
 
 export default WithdrawContainer
