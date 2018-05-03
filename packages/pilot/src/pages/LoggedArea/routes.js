@@ -1,7 +1,7 @@
 import Transaction32 from 'emblematic-icons/svg/Transaction32.svg'
 
 import Transactions from '../Transactions'
-import { Withdraw } from '../Withdraw'
+import Withdraw from '../Withdraw'
 
 export default {
   transactions: {
