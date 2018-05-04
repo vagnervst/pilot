@@ -1,0 +1,50 @@
+@import "former-kit-skin-pagarme/dist/styles/spacing.css";
+
+.content {
+  height: 100%;
+  padding: var(--spacing-small);
+}
+
+.formContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formMessage {
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #757575;
+  margin-bottom: 8px;
+}
+
+.balance {
+  font-size: 12px;
+  color: #757575;
+  margin-bottom: 32px;
+}
+
+.available {
+  font-weight: bold;
+  color: #757575;
+}
+
+.inputSection {
+  display: flex;
+  justify-content: center;
+}
+
+.inputSection > p {
+  font-size: 12px;
+  margin-right: 12px;
+}
+
+.inputSection > div {
+  margin-left: 12px;
+}
+
+.maximum {
+  font-weight: bold;
+  color: #37cc9a;
+}
