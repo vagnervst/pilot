@@ -1,9 +1,7 @@
 @import "former-kit-skin-pagarme/dist/styles/colors/light.css";
 @import "former-kit-skin-pagarme/dist/styles/spacing.css";
 
-.title,
-.content,
-.subtitle {
+.content {
   display: flex;
   align-items: center;
 }
@@ -15,23 +13,8 @@
   justify-content: space-between;
 }
 
-.amount,
-.title > h2 {
+.amount {
   margin: 0;
-}
-
-.title {
-  height: 18px;
-  text-transform: uppercase;
-
-  & h2 {
-    font-size: 14px;
-  }
-
-  & > span {
-    color: var(--color-light-chromium-100);
-    margin-left: calc(var(--spacing-tiny) - 4px);
-  }
 }
 
 .amount {
@@ -51,17 +34,8 @@
   }
 }
 
-.subtitle {
-  height: 35px;
-  font-size: 11px;
-  text-align: center;
-
-  & svg {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  & > * {
-    color: var(--color-light-steel-100);
-  }
+.empty {
+  border: 1px solid var(--color-light-steel-50);
+  margin: calc(var(--spacing-small) - 5px) 0;
+  width: 100px;
 }
