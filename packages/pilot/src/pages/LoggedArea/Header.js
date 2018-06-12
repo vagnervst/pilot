@@ -41,7 +41,7 @@ const Header = ({
   <HeaderContainer
     onBack={goBack}
     onLogout={onLogout}
-    onSettings={() => undefined}
+    onSettings={() => push(routes.accountSettings.path)}
     routes={values(routes)}
     t={t}
     user={user}
