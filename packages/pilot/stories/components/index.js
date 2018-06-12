@@ -13,6 +13,7 @@ import RiskLevel from './RiskLevel'
 import TotalDisplay from './TotalDisplay'
 import TransactionDetailsCard from './TransactionDetailsCard'
 import TreeView from './TreeView'
+import ApiKeySection from './ApiKey'
 
 storiesOf('Components', module)
   .add('Copy button', () => (
@@ -51,4 +52,6 @@ storiesOf('Components', module)
   .add('Property', () => (
     <Property />
   ))
-
+  .add('ApiKey', () => (
+    <ApiKeySection />
+  ))
