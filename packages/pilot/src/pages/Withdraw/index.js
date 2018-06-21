@@ -12,8 +12,14 @@ import {
   isNil,
   path,
   pathOr,
+  pipe,
+  when,
 } from 'ramda'
 import { translate } from 'react-i18next'
+import {
+  Alert,
+} from 'former-kit'
+import IconError from 'emblematic-icons/svg/ClearClose32.svg'
 import WithdrawContainer from '../../containers/Withdraw'
 import partnersBankCodes from '../../models/partnersBanksCodes'
 import env from '../../environment'
@@ -36,9 +42,12 @@ const enhanced = compose(
   withRouter
 )
 
-const getDefaultRecipient = client => (
+const getDefaultRecipient = (client, t) => (
   client.company.current()
-    .then(path(['default_recipient_id', env]))
+    .then(pipe(
+      path(['default_recipient_id', env]),
+      when(isNil, () => Promise.reject(new Error(t('pages.withdraw.no_recipient'))))
+    ))
     .then(id => (
       Promise.all([
         client.recipients.find({ id }),
@@ -122,6 +131,7 @@ class Withdraw extends Component {
       ...defaultStepsState,
       confirmationDisabledButtons: false,
       confirmationPasswordError: '',
+      error: '',
       requested: '0',
     }
 
@@ -142,12 +152,13 @@ class Withdraw extends Component {
           id,
         },
       },
+      t,
     } = this.props
 
     let recipientPromise
 
     if (!id) {
-      recipientPromise = getDefaultRecipient(client)
+      recipientPromise = getDefaultRecipient(client, t)
     } else {
       recipientPromise = getRecipientById(id, client)
     }
@@ -155,11 +166,19 @@ class Withdraw extends Component {
     recipientPromise
       .then((recipient) => {
         this.setState({
+          error: '',
           recipient,
         })
 
         if (!id) {
           history.replace(`/withdraw/${recipient.id}`)
+        }
+      })
+      .catch((error) => {
+        if (error.message === t('pages.withdraw.no_recipient')) {
+          this.setState({
+            error: error.message,
+          })
         }
       })
   }
@@ -278,6 +297,7 @@ class Withdraw extends Component {
       confirmationDisabledButtons,
       confirmationPasswordError,
       currentStep,
+      error,
       recipient,
       requested,
       statusMessage,
@@ -316,6 +336,14 @@ class Withdraw extends Component {
             transferCost={transferCost}
           />
         }
+        {error &&
+          <Alert
+            icon={<IconError height={16} width={16} />}
+            type="error"
+          >
+            <span>{error}</span>
+          </Alert>
+        }
       </Fragment>
     )
   }
@@ -338,8 +366,12 @@ Withdraw.propTypes = {
       credito_em_conta: PropTypes.number,
       ted: PropTypes.number,
     }),
-  }).isRequired,
+  }),
   t: PropTypes.func.isRequired,
+}
+
+Withdraw.defaultProps = {
+  pricing: {},
 }
 
 export default enhanced(Withdraw)
