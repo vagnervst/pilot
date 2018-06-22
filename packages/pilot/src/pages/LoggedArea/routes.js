@@ -8,8 +8,16 @@ import CompanySettings from '../CompanySettings'
 import Transactions from '../Transactions'
 import UserSettings from '../UserSettings'
 import Withdraw from '../Withdraw'
+import Anticipation from '../Anticipation'
 
 export default {
+  anticipation: {
+    component: Anticipation,
+    icon: Balance32,
+    exact: true,
+    path: '/anticipation/:id',
+    title: 'Antecipação',
+  },
   balance: {
     component: Balance,
     icon: Balance32,
