@@ -1,0 +1,42 @@
+{
+  "at": "às",
+  "clear_filters": "Limpar filtros",
+  "confirm_filters": "Filtrar",
+  "find_by": "Filtre pelo nome do relatório",
+  "items_per_page": "itens por página",
+  "no_content_found": "Não foram encontrados resultados para essa busca.",
+  "of": "de",
+  "new_report": "Novo relatório",
+  "period_summary": "Resumo de:",
+  "reports": "Relatórios",
+  "reports_number": "Nº de relatórios:",
+  "try_filter_again": "Tente novamente com outros filtros.",
+  "dates" : {
+    "any": "QUALQUER DATA",
+    "cancel": "Cancelar",
+    "confirm": "CONFIRMAR PERÍODO",
+    "custom": "PERSONALIZADO",
+    "day": "DIA",
+    "day_selected": "DIA SELECIONADO",
+    "end": "FIM",
+    "no_selected": "NENHUM DIA SELECIONADO",
+    "period": "PERÍODO",
+    "select": "Todo o período",
+    "selected":"DIAS SELECIONADOS",
+    "start": "INÍCIO",
+    "today": "HOJE"
+  },
+  "report": {
+    "created_at": "Criado em",
+    "status": "STATUS",
+    "id": "ID (ID do relatório)",
+    "filters": "Filtros",
+    "export_to": "Exportar para",
+    "type_files": {
+      "pdf":"PDF",
+      "excel": "Excel",
+      "csv":"CSV"
+    }
+  }
+}
+
