@@ -67,7 +67,7 @@ const PhysicPerson = ({
       >
         <FormInput
           size={30}
-          maxLength={12}
+          maxLength={30}
           inputStyle="form"
           type="text"
           label="URL(Opcional)"
@@ -104,8 +104,6 @@ PhysicPerson.propTypes = {
   onChangeEmail: PropTypes.func,
   onChangeUrl: PropTypes.func,
   onChangePhone: PropTypes.func,
-
-  // typeNumber: PropTypes.number,
 }
 
 PhysicPerson.defaultProps = {
@@ -117,7 +115,6 @@ PhysicPerson.defaultProps = {
   onChangeEmail: onChangeEmail => onChangeEmail,
   onChangeUrl: onChangeUrl => onChangeUrl,
   onChangePhone: onChangePhone => onChangePhone,
-  // typeNumber: number,
 }
 
 export default PhysicPerson

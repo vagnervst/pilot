@@ -13,6 +13,7 @@ import {
   Row,
 } from 'former-kit'
 import PhysicPerson from './renderPhysicPerson'
+import LegalPerson from './renderLegalPerson'
 import recipientTypes from '../../models/recipientTypes'
 import styles from './style.css'
 
@@ -22,15 +23,19 @@ class RecipientStep extends Component {
     this.state = {
       value: 'physic',
       checked: props.checked,
+      quantitySelected: 'zero',
     }
-
     this.handleChange = this.handleChange.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
-
     this.handleChangeName = this.handleChangeName.bind(this)
     this.handleChangeEmail = this.handleChangeEmail.bind(this)
     this.handleChangeUrl = this.handleChangeUrl.bind(this)
     this.handleChangePhone = this.handleChangePhone.bind(this)
+    this.handleChangeLegalName = this.handleChangeLegalName.bind(this)
+    this.handleChangeLegalEmail = this.handleChangeLegalEmail.bind(this)
+    this.handleChangeLegalUrl = this.handleChangeLegalUrl.bind(this)
+    this.handleChangeLegalPhone = this.handleChangeLegalPhone.bind(this)
+    this.handleQuantityChange = this.handleQuantityChange.bind(this)
   }
 
   handleChange (event) {
@@ -69,6 +74,36 @@ class RecipientStep extends Component {
     })
   }
 
+  handleChangeLegalName (event) {
+    this.setState({
+      inputLegalName: event.target.value,
+    })
+  }
+
+  handleChangeLegalEmail (event) {
+    this.setState({
+      inputLegalEmail: event.target.value,
+    })
+  }
+
+  handleChangeLegalUrl (event) {
+    this.setState({
+      inputLegalUrl: event.target.value,
+    })
+  }
+
+  handleChangeLegalPhone (event) {
+    this.setState({
+      inputLegalPhone: event.target.value,
+    })
+  }
+
+  handleQuantityChange (event) {
+    this.setState({
+      quantitySelected: event.target.value,
+    })
+  }
+
   // handleSubmit(event) {
   //   alert('A name was submitted: ' + this.input.current.value);
   //   event.preventDefault();
@@ -79,7 +114,6 @@ class RecipientStep extends Component {
       disabled,
       error,
       name,
-      // typeNumber,
     } = this.props
 
     const {
@@ -90,6 +124,10 @@ class RecipientStep extends Component {
       inputEmail,
       inputUrl,
       inputPhone,
+      inputLegalName,
+      inputLegalEmail,
+      inputLegalUrl,
+      inputLegalPhone,
     } = this.state
 
     return (
@@ -116,7 +154,6 @@ class RecipientStep extends Component {
                     size={30}
                     maxLength={30}
                     inputStyle="form"
-                    // type={typeNumber}
                     label="CNPJ"
                     value={cnpj}
                     onChange={e => this.setState({ cnpj: e.target.value })}
@@ -148,6 +185,22 @@ class RecipientStep extends Component {
               // master, saque e estorno
               // como cria o componente e como manipula as propriedades que eles usam
             />}
+          {checked && value === 'legal' &&
+            <LegalPerson
+              inputLegalName={inputLegalName}
+              inputLegalEmail={inputLegalEmail}
+              inputLegalUrl={inputLegalUrl}
+              inputLegalPhone={inputLegalPhone}
+              onChangeLegalName={this.handleChangeLegalName}
+              onChangeLegalEmail={this.handleChangeLegalEmail}
+              onChangeLegalUrl={this.handleChangeLegalUrl}
+              onChangeLegalPhone={this.handleChangeLegalPhone}
+              quantitySelected={this.state.quantitySelected}
+              options={this.props.legalQuantity}
+              onChangeQuantity={this.handleQuantityChange}
+              // master, saque e estorno
+              // como cria o componente e como manipula as propriedades que eles usam
+            />}
           <br />
           <CardActions>
             <Button fill="outline">Cancelar</Button>
@@ -163,12 +216,11 @@ RecipientStep.propTypes = {
   disabled: PropTypes.bool,
   error: PropTypes.string,
   checked: PropTypes.bool,
-  // onChangeName: PropTypes.func,
-  // inputEmail: PropTypes.string,
-  // inputUrl: PropTypes.string,
-  // inputPhone: PropTypes.string,
-
-  // typeNumber: PropTypes.number,
+  legalQuantity: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    })).isRequired,
 }
 
 RecipientStep.defaultProps = {
@@ -176,10 +228,6 @@ RecipientStep.defaultProps = {
   disabled: false,
   error: '',
   checked: false,
-  // onChangeName: onChangeName => onChangeName,
-
-
-  // typeNumber: number,
 }
 
 export default RecipientStep
