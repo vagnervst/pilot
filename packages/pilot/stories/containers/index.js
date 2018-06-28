@@ -48,6 +48,7 @@ import {
   AnticipationResultWithAutomaticTransfer,
   AnticipationResultWithoutAutomaticTransfer,
 } from './Anticipation/Result'
+import Anticipation from './Anticipation'
 
 storiesOf('Containers', module)
   .add('Recipient list', () => (
@@ -178,4 +179,7 @@ storiesOf('Containers', module)
   ))
   .add('Anticipation Result error', () => (
     <AnticipationResultError />
+  ))
+  .add('Anticipation', () => (
+    <Anticipation />
   ))
