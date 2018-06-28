@@ -23,7 +23,7 @@ class RecipientStep extends Component {
     this.state = {
       value: 'physic',
       checked: props.checked,
-      quantitySelected: 'zero',
+      quantitySelected: props.quantitySelected,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
@@ -196,10 +196,9 @@ class RecipientStep extends Component {
               onChangeLegalUrl={this.handleChangeLegalUrl}
               onChangeLegalPhone={this.handleChangeLegalPhone}
               quantitySelected={this.state.quantitySelected}
-              options={this.props.legalQuantity}
+              value={this.state.quantitySelected}
+              options={this.props.numbers}
               onChangeQuantity={this.handleQuantityChange}
-              // master, saque e estorno
-              // como cria o componente e como manipula as propriedades que eles usam
             />}
           <br />
           <CardActions>
@@ -216,11 +215,12 @@ RecipientStep.propTypes = {
   disabled: PropTypes.bool,
   error: PropTypes.string,
   checked: PropTypes.bool,
-  legalQuantity: PropTypes.arrayOf(
+  numbers: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
     })).isRequired,
+  quantitySelected: PropTypes.string,
 }
 
 RecipientStep.defaultProps = {
@@ -228,6 +228,7 @@ RecipientStep.defaultProps = {
   disabled: false,
   error: '',
   checked: false,
+  quantitySelected: 'zero',
 }
 
 export default RecipientStep

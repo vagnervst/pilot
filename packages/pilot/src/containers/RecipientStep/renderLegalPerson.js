@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {
   CardContent,
   Col,
-  DropdownForm,
+  FormDropdown,
   FormInput,
   Grid,
   Row,
@@ -100,7 +100,7 @@ const LegalPerson = ({
     <Grid>
       <Row>
         <Col>
-          <DropdownForm
+          <FormDropdown
             options={this.numbers}
             name="dropdownLegal"
             value={quantitySelected}
