@@ -8,7 +8,7 @@ import {
   Grid,
   Row,
 } from 'former-kit'
-// import RecipientPartner from './RecipientPartner/index'
+import RecipientPartner from './RecipientPartner/index'
 
 const LegalPerson = ({
   inputLegalName,
@@ -22,12 +22,12 @@ const LegalPerson = ({
   quantitySelected,
   onChangeQuantity,
   numbers,
-  // partnerName,
-  // partnerCpf,
-  // partnerEmail,
-  // onChangePartnerName,
-  // onChangePartnerCpf,
-  // onChangePartnerEmail,
+  partnerName,
+  partnerCpf,
+  partnerEmail,
+  onChangePartnerName,
+  onChangePartnerCpf,
+  onChangePartnerEmail,
 }) => (
   <CardContent>
     <h2>Empresa</h2>
@@ -119,14 +119,18 @@ const LegalPerson = ({
       </Row>
     </Grid>
     <br />
-    {/* <RecipientPartner
-      partnerName={partnerName}
-      partnerCpf={partnerCpf}
-      partnerEmail={partnerEmail}
-      onChangePartnerName={onChangePartnerName}
-      onChangePartnerCpf={onChangePartnerCpf}
-      onChangePartnerEmail={onChangePartnerEmail}
-    /> */}
+    {/* // Carregando a Lógica aqui no filho e passando para o pai */}
+    {quantitySelected === 'one' &&
+      <RecipientPartner
+        partnerName={partnerName}
+        partnerCpf={partnerCpf}
+        partnerEmail={partnerEmail}
+        onChangePartnerName={onChangePartnerName}
+        onChangePartnerCpf={onChangePartnerCpf}
+        onChangePartnerEmail={onChangePartnerEmail}
+      />
+  // Para fazer o resto terei que criar ma variável para cada quantidade para cada RecipientPartner
+    }
   </CardContent>
 )
 
@@ -141,12 +145,12 @@ LegalPerson.propTypes = {
   onChangeLegalPhone: PropTypes.func,
   quantitySelected: PropTypes.string,
   onChangeQuantity: PropTypes.func,
-  // partnerName: PropTypes.string,
-  // partnerCpf: PropTypes.string,
-  // partnerEmail: PropTypes.string,
-  // onChangePartnerName: PropTypes.func,
-  // onChangePartnerCpf: PropTypes.func,
-  // onChangePartnerEmail: PropTypes.func,
+  partnerName: PropTypes.string,
+  partnerCpf: PropTypes.string,
+  partnerEmail: PropTypes.string,
+  onChangePartnerName: PropTypes.func,
+  onChangePartnerCpf: PropTypes.func,
+  onChangePartnerEmail: PropTypes.func,
   numbers: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -165,12 +169,12 @@ LegalPerson.defaultProps = {
   onChangeLegalPhone: onChangePhone => onChangePhone,
   quantitySelected: 'zero',
   onChangeQuantity: onChangeQuantity => onChangeQuantity,
-  // partnerName: '',
-  // partnerCpf: '',
-  // partnerEmail: '',
-  // onChangePartnerName: onChangePartnerName => onChangePartnerName,
-  // onChangePartnerCpf: onChangePartnerCpf => onChangePartnerCpf,
-  // onChangePartnerEmail: onChangePartnerEmail => onChangePartnerEmail,
+  partnerName: '',
+  partnerCpf: '',
+  partnerEmail: '',
+  onChangePartnerName: onChangePartnerName => onChangePartnerName,
+  onChangePartnerCpf: onChangePartnerCpf => onChangePartnerCpf,
+  onChangePartnerEmail: onChangePartnerEmail => onChangePartnerEmail,
 }
 
 export default LegalPerson

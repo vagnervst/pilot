@@ -20,7 +20,8 @@ class RecipientStep extends Component {
     this.state = {
       value: 'physic',
       checked: props.checked,
-      // quantitySelected: props.quantitySelected,
+      // não preciso mais do quantitySeected aqui
+      // quantitySelected: undefined,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
@@ -99,6 +100,7 @@ class RecipientStep extends Component {
   }
 
   handleQuantity (event) {
+    // console.log(event)
     this.setState({
       quantitySelected: event.target.value,
     })
@@ -150,6 +152,7 @@ class RecipientStep extends Component {
       partnerName,
       partnerCpf,
       partnerEmail,
+      quantitySelected,
     } = this.state
 
     return (
@@ -218,7 +221,9 @@ class RecipientStep extends Component {
               onChangePartnerName={this.handlePartnerName}
               onChangePartnerCpf={this.handlePartnerCpf}
               onChangePartnerEmail={this.handlePartnerEmail}
-            />}
+              quantitySelected={quantitySelected}
+            />
+          }
           <br />
           <CardActions>
             <Button fill="outline">Cancelar</Button>
