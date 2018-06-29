@@ -96,15 +96,13 @@ CompanySettings.propTypes = {
     state: PropTypes.string,
     zipcode: PropTypes.string,
   }).isRequired,
-  apiKeys: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      keys: PropTypes.shape({
-        encryptionKey: PropTypes.string,
-        apiKey: PropTypes.string,
-      }),
-    })
-  ).isRequired,
+  apiKeys: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    keys: PropTypes.shape({
+      encryptionKey: PropTypes.string.isRequired,
+      apiKey: PropTypes.string.isRequired,
+    }),
+  }),
   createUserStatus: PropTypes.shape({
     error: PropTypes.string,
     loading: PropTypes.bool,
@@ -149,6 +147,7 @@ CompanySettings.propTypes = {
 }
 
 CompanySettings.defaultProps = {
+  apiKeys: null,
   t: t => t,
 }
 

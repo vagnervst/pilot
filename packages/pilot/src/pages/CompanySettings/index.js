@@ -35,7 +35,7 @@ class CompanySettingsPage extends React.Component {
     this.state = {
       companyInfo: {
         pricing: [],
-        apiKeys: [],
+        apiKeys: null,
         team: [],
         general: {},
         address: {},

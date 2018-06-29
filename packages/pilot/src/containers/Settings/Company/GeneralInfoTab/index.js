@@ -29,15 +29,13 @@ const GeneralInfoTab = ({
 )
 
 GeneralInfoTab.propTypes = {
-  apiKeys: PropTypes.arrayOf(
-    PropTypes.shape({
-      keys: PropTypes.shape({
-        apiKey: PropTypes.string,
-        encryptionKey: PropTypes.string,
-      }),
-      title: PropTypes.string,
-    })
-  ).isRequired,
+  apiKeys: PropTypes.shape({
+    keys: PropTypes.shape({
+      apiKey: PropTypes.string.isRequired,
+      encryptionKey: PropTypes.string.isRequired,
+    }),
+    title: PropTypes.string.isRequired,
+  }),
   pricing: PropTypes.arrayOf(PropTypes.shape({
     mainTitle: PropTypes.string.isRequired,
     subItems: PropTypes.arrayOf(PropTypes.shape({
@@ -49,6 +47,10 @@ GeneralInfoTab.propTypes = {
     })).isRequired,
   })).isRequired,
   t: PropTypes.func.isRequired,
+}
+
+GeneralInfoTab.defaultProps = {
+  apiKeys: null,
 }
 
 export default GeneralInfoTab

@@ -46,7 +46,13 @@ class ApiKeyContainer extends React.Component {
 
   renderContent () {
     const {
-      apiKeys,
+      apiKeys: {
+        title,
+        keys: {
+          apiKey,
+          encryptionKey,
+        },
+      },
       t,
     } = this.props
 
@@ -56,47 +62,45 @@ class ApiKeyContainer extends React.Component {
           {t('pages.settings.company.card.general.headline.api')}
         </p>
         <Grid>
-          {apiKeys.map(({ title, keys: { apiKey, encryptionKey } }) => (
-            <Row key={title} stretch>
-              <Col
-                align="center"
-                palm={12}
-                tablet={1}
-                desk={1}
-                tv={1}
-              >
-                <strong>
-                  {t(`pages.settings.company.card.general.api_key.${title}`)}
-                </strong>
-              </Col>
-              <Col
-                palm={12}
-                tablet={6}
-                desk={6}
-                tv={6}
-              >
-                <ApiKey
-                  title="API"
-                  apiKey={apiKey}
-                  copyLabel="Copiar"
-                  onCopy={copyToClipBoard}
-                />
-              </Col>
-              <Col
-                palm={12}
-                tablet={6}
-                desk={5}
-                tv={5}
-              >
-                <ApiKey
-                  title="Chave De Criptografia"
-                  apiKey={encryptionKey}
-                  copyLabel="Copiar"
-                  onCopy={copyToClipBoard}
-                />
-              </Col>
-            </Row>
-          ))}
+          <Row key={title} stretch>
+            <Col
+              align="center"
+              palm={12}
+              tablet={1}
+              desk={1}
+              tv={1}
+            >
+              <strong>
+                {t(`pages.settings.company.card.general.api_key.${title}`)}
+              </strong>
+            </Col>
+            <Col
+              palm={12}
+              tablet={6}
+              desk={6}
+              tv={6}
+            >
+              <ApiKey
+                title="API"
+                apiKey={apiKey}
+                copyLabel="Copiar"
+                onCopy={copyToClipBoard}
+              />
+            </Col>
+            <Col
+              palm={12}
+              tablet={6}
+              desk={5}
+              tv={5}
+            >
+              <ApiKey
+                title="Chave De Criptografia"
+                apiKey={encryptionKey}
+                copyLabel="Copiar"
+                onCopy={copyToClipBoard}
+              />
+            </Col>
+          </Row>
         </Grid>
       </CardContent>
     )
@@ -125,16 +129,18 @@ class ApiKeyContainer extends React.Component {
 }
 
 ApiKeyContainer.propTypes = {
-  apiKeys: PropTypes.arrayOf(
-    PropTypes.shape({
-      keys: PropTypes.shape({
-        apiKey: PropTypes.string,
-        encryptionKey: PropTypes.string,
-      }),
-      title: PropTypes.string,
-    })
-  ).isRequired,
+  apiKeys: PropTypes.shape({
+    keys: PropTypes.shape({
+      apiKey: PropTypes.string.isRequired,
+      encryptionKey: PropTypes.string.isRequired,
+    }),
+    title: PropTypes.string.isRequired,
+  }),
   t: PropTypes.func.isRequired,
+}
+
+ApiKeyContainer.defaultProps = {
+  apiKeys: null,
 }
 
 export default ApiKeyContainer
