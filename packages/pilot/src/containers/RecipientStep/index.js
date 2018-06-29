@@ -5,13 +5,10 @@ import {
   Card,
   CardContent,
   CardActions,
-  Col,
-  Grid,
-  FormInput,
-  FormCheckbox,
   RadioGroup,
-  Row,
 } from 'former-kit'
+import CpfInput from './renderCpfInput'
+import CnpjInput from './renderCnpjInput'
 import PhysicPerson from './renderPhysicPerson'
 import LegalPerson from './renderLegalPerson'
 import recipientTypes from '../../models/recipientTypes'
@@ -119,6 +116,7 @@ class RecipientStep extends Component {
     const {
       value,
       checked,
+      cpf,
       cnpj,
       inputName,
       inputEmail,
@@ -134,6 +132,7 @@ class RecipientStep extends Component {
       <div>
         <Card>
           <CardContent>
+            {this.handleChangeLabelCheck}
             <h2>Identificação</h2>
             <h3>
             Escolha qual tipo de pessoa do seu recebedor e preencha o documento
@@ -147,30 +146,21 @@ class RecipientStep extends Component {
               disabled={disabled}
               error={error}
             />
-            <Grid>
-              <Row>
-                <Col>
-                  <FormInput
-                    size={30}
-                    maxLength={30}
-                    inputStyle="form"
-                    label="CNPJ"
-                    value={cnpj}
-                    onChange={e => this.setState({ cnpj: e.target.value })}
-                  />
-                </Col>
-              </Row>
-            </Grid>
+            {value === 'physic' &&
+              <CpfInput
+                cpf={cpf}
+                // os dois não aparecem juntos
+                checked={checked}
+                onChangeCheckCpf={this.handleCheck}
+              />}
+            {value === 'legal' &&
+              <CnpjInput
+                cnpj={cnpj}
+                checked={checked}
+                onChangeCheckCnpj={this.handleCheck}
+              />}
             <br />
             <br />
-            <FormCheckbox
-              label="Quero incluir informações sobre a empresa e os sócios"
-              name="info"
-              error={error}
-              disabled={disabled}
-              checked={checked}
-              onChange={this.handleCheck}
-            />
           </CardContent>
           {checked && value === 'physic' &&
             <PhysicPerson

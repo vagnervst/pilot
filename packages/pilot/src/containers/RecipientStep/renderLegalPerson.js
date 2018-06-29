@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {
   CardContent,
   Col,
-  FormDropdown,
+  // FormDropdown,
   FormInput,
   Grid,
   Row,
@@ -18,8 +18,8 @@ const LegalPerson = ({
   onChangeLegalEmail,
   onChangeLegalUrl,
   onChangeLegalPhone,
-  quantitySelected,
-  onChangeQuantity,
+  // quantitySelected,
+  // onChangeQuantity,
 }) => (
   <CardContent>
     <h2>Empresa</h2>
@@ -100,17 +100,67 @@ const LegalPerson = ({
     <Grid>
       <Row>
         <Col>
-          <FormDropdown
+          {/* <FormDropdown
             options={this.numbers}
             name="dropdownLegal"
             value={quantitySelected}
             label="Escolha a quantidade de sócios"
             onChange={onChangeQuantity}
-          />
+          /> */}
         </Col>
       </Row>
     </Grid>
     <br />
+    <Row stretch>
+      <Col
+        desk={2}
+        palm={2}
+        tablet={2}
+        tv={2}
+      >
+        <FormInput
+          size={30}
+          maxLength={30}
+          inputStyle="form"
+          type="text"
+          label="Nome"
+          // value={inputLegalEmail}
+          // onChange={onChangeLegalEmail}
+        />
+      </Col>
+      <Col
+        desk={2}
+        palm={2}
+        tablet={2}
+        tv={2}
+      >
+        <FormInput
+          size={30}
+          maxLength={30}
+          inputStyle="form"
+          type="text"
+          label="CPF"
+          // value={inputLegalUrl}
+          // onChange={onChangeLegalUrl}
+        />
+      </Col>
+      <Col
+        desk={1}
+        palm={1}
+        tablet={1}
+        tv={1}
+      >
+        <FormInput
+          size={30}
+          maxLength={30}
+          inputStyle="form"
+          type="text"
+          label="E-mail"
+          // value={inputLegalPhone}
+          // onChange={onChangeLegalPhone}
+        />
+      </Col>
+    </Row>
   </CardContent>
 )
 
@@ -123,8 +173,8 @@ LegalPerson.propTypes = {
   onChangeLegalEmail: PropTypes.func,
   onChangeLegalUrl: PropTypes.func,
   onChangeLegalPhone: PropTypes.func,
-  quantitySelected: PropTypes.string,
-  onChangeQuantity: PropTypes.func,
+  // quantitySelected: PropTypes.string,
+  // onChangeQuantity: PropTypes.func,
 }
 
 LegalPerson.defaultProps = {
@@ -136,8 +186,8 @@ LegalPerson.defaultProps = {
   onChangeLegalEmail: onChangeEmail => onChangeEmail,
   onChangeLegalUrl: onChangeUrl => onChangeUrl,
   onChangeLegalPhone: onChangePhone => onChangePhone,
-  quantitySelected: '',
-  onChangeQuantity: onChangeQuantity => onChangeQuantity,
+  // quantitySelected: '',
+  // onChangeQuantity: onChangeQuantity => onChangeQuantity,
 }
 
 export default LegalPerson

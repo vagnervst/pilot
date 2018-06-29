@@ -8,10 +8,6 @@ const RecipientStepContainer = () => (
     numbers={legalQuantity.numbers}
     value="string"
   />
-  // items={legendStatus.items}
-  // // acesso através do props no src
-  // value="string"
-  // />
 )
 
 export default RecipientStepContainer
