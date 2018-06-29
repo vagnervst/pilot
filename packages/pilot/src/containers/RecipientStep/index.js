@@ -20,7 +20,7 @@ class RecipientStep extends Component {
     this.state = {
       value: 'physic',
       checked: props.checked,
-      quantitySelected: props.quantitySelected,
+      // quantitySelected: props.quantitySelected,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
@@ -32,7 +32,7 @@ class RecipientStep extends Component {
     this.handleChangeLegalEmail = this.handleChangeLegalEmail.bind(this)
     this.handleChangeLegalUrl = this.handleChangeLegalUrl.bind(this)
     this.handleChangeLegalPhone = this.handleChangeLegalPhone.bind(this)
-    this.handleQuantityChange = this.handleQuantityChange.bind(this)
+    this.handleQuantity = this.handleQuantity.bind(this)
     this.handlePartnerName = this.handlePartnerName.bind(this)
     this.handlePartnerCpf = this.handlePartnerCpf.bind(this)
     this.handlePartnerEmail = this.handlePartnerEmail.bind(this)
@@ -98,7 +98,7 @@ class RecipientStep extends Component {
     })
   }
 
-  handleQuantityChange (event) {
+  handleQuantity (event) {
     this.setState({
       quantitySelected: event.target.value,
     })
@@ -209,10 +209,9 @@ class RecipientStep extends Component {
               onChangeLegalEmail={this.handleChangeLegalEmail}
               onChangeLegalUrl={this.handleChangeLegalUrl}
               onChangeLegalPhone={this.handleChangeLegalPhone}
-              quantitySelected={this.state.quantitySelected}
               value={this.state.quantitySelected}
-              options={this.props.numbers}
-              onChangeQuantity={this.handleQuantityChange}
+              onChangeQuantity={this.handleQuantity}
+              numbers={this.props.numbers}
               partnerName={partnerName}
               partnerCpf={partnerCpf}
               partnerEmail={partnerEmail}
@@ -240,7 +239,6 @@ RecipientStep.propTypes = {
       name: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
     })).isRequired,
-  quantitySelected: PropTypes.string,
 }
 
 RecipientStep.defaultProps = {
@@ -248,7 +246,6 @@ RecipientStep.defaultProps = {
   disabled: false,
   error: '',
   checked: false,
-  quantitySelected: 'zero',
 }
 
 export default RecipientStep

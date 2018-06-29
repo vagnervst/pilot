@@ -8,7 +8,7 @@ import {
   Grid,
   Row,
 } from 'former-kit'
-import RecipientPartner from './RecipientPartner/index'
+// import RecipientPartner from './RecipientPartner/index'
 
 const LegalPerson = ({
   inputLegalName,
@@ -21,12 +21,13 @@ const LegalPerson = ({
   onChangeLegalPhone,
   quantitySelected,
   onChangeQuantity,
-  partnerName,
-  partnerCpf,
-  partnerEmail,
-  onChangePartnerName,
-  onChangePartnerCpf,
-  onChangePartnerEmail,
+  numbers,
+  // partnerName,
+  // partnerCpf,
+  // partnerEmail,
+  // onChangePartnerName,
+  // onChangePartnerCpf,
+  // onChangePartnerEmail,
 }) => (
   <CardContent>
     <h2>Empresa</h2>
@@ -108,7 +109,7 @@ const LegalPerson = ({
       <Row>
         <Col>
           <FormDropdown
-            options={this.numbers}
+            options={numbers}
             name="dropdownLegal"
             value={quantitySelected}
             label="Escolha a quantidade de sócios"
@@ -118,14 +119,14 @@ const LegalPerson = ({
       </Row>
     </Grid>
     <br />
-    <RecipientPartner
+    {/* <RecipientPartner
       partnerName={partnerName}
       partnerCpf={partnerCpf}
       partnerEmail={partnerEmail}
       onChangePartnerName={onChangePartnerName}
       onChangePartnerCpf={onChangePartnerCpf}
       onChangePartnerEmail={onChangePartnerEmail}
-    />
+    /> */}
   </CardContent>
 )
 
@@ -140,12 +141,17 @@ LegalPerson.propTypes = {
   onChangeLegalPhone: PropTypes.func,
   quantitySelected: PropTypes.string,
   onChangeQuantity: PropTypes.func,
-  partnerName: PropTypes.string,
-  partnerCpf: PropTypes.string,
-  partnerEmail: PropTypes.string,
-  onChangePartnerName: PropTypes.func,
-  onChangePartnerCpf: PropTypes.func,
-  onChangePartnerEmail: PropTypes.func,
+  // partnerName: PropTypes.string,
+  // partnerCpf: PropTypes.string,
+  // partnerEmail: PropTypes.string,
+  // onChangePartnerName: PropTypes.func,
+  // onChangePartnerCpf: PropTypes.func,
+  // onChangePartnerEmail: PropTypes.func,
+  numbers: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
+    })).isRequired,
 }
 
 LegalPerson.defaultProps = {
@@ -157,14 +163,14 @@ LegalPerson.defaultProps = {
   onChangeLegalEmail: onChangeEmail => onChangeEmail,
   onChangeLegalUrl: onChangeUrl => onChangeUrl,
   onChangeLegalPhone: onChangePhone => onChangePhone,
-  quantitySelected: '',
+  quantitySelected: 'zero',
   onChangeQuantity: onChangeQuantity => onChangeQuantity,
-  partnerName: '',
-  partnerCpf: '',
-  partnerEmail: '',
-  onChangePartnerName: onChangePartnerName => onChangePartnerName,
-  onChangePartnerCpf: onChangePartnerCpf => onChangePartnerCpf,
-  onChangePartnerEmail: onChangePartnerEmail => onChangePartnerEmail,
+  // partnerName: '',
+  // partnerCpf: '',
+  // partnerEmail: '',
+  // onChangePartnerName: onChangePartnerName => onChangePartnerName,
+  // onChangePartnerCpf: onChangePartnerCpf => onChangePartnerCpf,
+  // onChangePartnerEmail: onChangePartnerEmail => onChangePartnerEmail,
 }
 
 export default LegalPerson
