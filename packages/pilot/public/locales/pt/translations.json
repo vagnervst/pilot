@@ -574,7 +574,8 @@
             },
             "api_key": {
               "live": "Live",
-              "test": "Test"
+              "test": "Test",
+              "test_advise": "Atenção: essas chaves funcionam somente para operações em modo teste. Transações criadas usando essas chaves não geram recebíveis reais."
             }
           },
           "product": {

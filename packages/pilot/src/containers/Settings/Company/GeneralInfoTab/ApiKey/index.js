@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {
+  Alert,
   CardSection,
   CardContent,
   CardSectionDoubleLineTitle,
@@ -9,6 +10,7 @@ import {
   Row,
 } from 'former-kit'
 import IconLock from 'emblematic-icons/svg/Lock32.svg'
+import IconWarning from 'emblematic-icons/svg/Warning32.svg'
 
 import ApiKey from '../../../../../components/ApiKey'
 
@@ -53,6 +55,7 @@ class ApiKeyContainer extends React.Component {
           encryptionKey,
         },
       },
+      environment,
       t,
     } = this.props
 
@@ -62,7 +65,24 @@ class ApiKeyContainer extends React.Component {
           {t('pages.settings.company.card.general.headline.api')}
         </p>
         <Grid>
-          <Row key={title} stretch>
+          {environment === 'test' &&
+            <Row stretch>
+              <Col
+                desk={12}
+                palm={12}
+                tablet={12}
+                tv={12}
+              >
+                <Alert
+                  icon={<IconWarning height={16} width={16} />}
+                  type="warning"
+                >
+                  {t('pages.settings.company.card.general.api_key.test_advise')}
+                </Alert>
+              </Col>
+            </Row>
+          }
+          <Row stretch>
             <Col
               align="center"
               palm={12}
@@ -136,6 +156,10 @@ ApiKeyContainer.propTypes = {
     }),
     title: PropTypes.string.isRequired,
   }),
+  environment: PropTypes.oneOf([
+    'live',
+    'test',
+  ]).isRequired,
   t: PropTypes.func.isRequired,
 }
 

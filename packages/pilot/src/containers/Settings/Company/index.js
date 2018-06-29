@@ -28,6 +28,7 @@ class CompanySettings extends Component {
       pricing,
       team,
       apiKeys,
+      environment,
       general,
       address,
       managingPartner,
@@ -58,6 +59,7 @@ class CompanySettings extends Component {
         {selectedIndex === 0 &&
           <GeneralInfoTab
             apiKeys={apiKeys}
+            environment={environment}
             pricing={pricing}
             t={t}
           />
@@ -113,6 +115,10 @@ CompanySettings.propTypes = {
     loading: PropTypes.bool,
     success: PropTypes.bool,
   }).isRequired,
+  environment: PropTypes.oneOf([
+    'live',
+    'test',
+  ]).isRequired,
   general: PropTypes.shape({
     name: PropTypes.string,
     fullName: PropTypes.string,

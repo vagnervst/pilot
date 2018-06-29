@@ -8,6 +8,7 @@ import Pricing from './Pricing'
 
 const GeneralInfoTab = ({
   apiKeys,
+  environment,
   pricing,
   t,
 }) => (
@@ -22,6 +23,7 @@ const GeneralInfoTab = ({
     <CardContent>
       <ApiKey
         apiKeys={apiKeys}
+        environment={environment}
         t={t}
       />
     </CardContent>
@@ -36,6 +38,10 @@ GeneralInfoTab.propTypes = {
     }),
     title: PropTypes.string.isRequired,
   }),
+  environment: PropTypes.oneOf([
+    'live',
+    'test',
+  ]).isRequired,
   pricing: PropTypes.arrayOf(PropTypes.shape({
     mainTitle: PropTypes.string.isRequired,
     subItems: PropTypes.arrayOf(PropTypes.shape({
