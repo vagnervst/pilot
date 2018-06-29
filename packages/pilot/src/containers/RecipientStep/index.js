@@ -33,6 +33,9 @@ class RecipientStep extends Component {
     this.handleChangeLegalUrl = this.handleChangeLegalUrl.bind(this)
     this.handleChangeLegalPhone = this.handleChangeLegalPhone.bind(this)
     this.handleQuantityChange = this.handleQuantityChange.bind(this)
+    this.handlePartnerName = this.handlePartnerName.bind(this)
+    this.handlePartnerCpf = this.handlePartnerCpf.bind(this)
+    this.handlePartnerEmail = this.handlePartnerEmail.bind(this)
   }
 
   handleChange (event) {
@@ -101,6 +104,24 @@ class RecipientStep extends Component {
     })
   }
 
+  handlePartnerName (event) {
+    this.setState({
+      partnerName: event.target.value,
+    })
+  }
+
+  handlePartnerCpf (event) {
+    this.setState({
+      partnerCpf: event.target.value,
+    })
+  }
+
+  handlePartnerEmail (event) {
+    this.setState({
+      partnerEmail: event.target.value,
+    })
+  }
+
   // handleSubmit(event) {
   //   alert('A name was submitted: ' + this.input.current.value);
   //   event.preventDefault();
@@ -126,6 +147,9 @@ class RecipientStep extends Component {
       inputLegalEmail,
       inputLegalUrl,
       inputLegalPhone,
+      partnerName,
+      partnerCpf,
+      partnerEmail,
     } = this.state
 
     return (
@@ -189,6 +213,12 @@ class RecipientStep extends Component {
               value={this.state.quantitySelected}
               options={this.props.numbers}
               onChangeQuantity={this.handleQuantityChange}
+              partnerName={partnerName}
+              partnerCpf={partnerCpf}
+              partnerEmail={partnerEmail}
+              onChangePartnerName={this.handlePartnerName}
+              onChangePartnerCpf={this.handlePartnerCpf}
+              onChangePartnerEmail={this.handlePartnerEmail}
             />}
           <br />
           <CardActions>

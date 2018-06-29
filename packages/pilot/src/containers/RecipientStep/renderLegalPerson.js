@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import {
   CardContent,
   Col,
-  // FormDropdown,
+  FormDropdown,
   FormInput,
   Grid,
   Row,
 } from 'former-kit'
+import RecipientPartner from './RecipientPartner/index'
 
 const LegalPerson = ({
   inputLegalName,
@@ -18,8 +19,14 @@ const LegalPerson = ({
   onChangeLegalEmail,
   onChangeLegalUrl,
   onChangeLegalPhone,
-  // quantitySelected,
-  // onChangeQuantity,
+  quantitySelected,
+  onChangeQuantity,
+  partnerName,
+  partnerCpf,
+  partnerEmail,
+  onChangePartnerName,
+  onChangePartnerCpf,
+  onChangePartnerEmail,
 }) => (
   <CardContent>
     <h2>Empresa</h2>
@@ -100,67 +107,25 @@ const LegalPerson = ({
     <Grid>
       <Row>
         <Col>
-          {/* <FormDropdown
+          <FormDropdown
             options={this.numbers}
             name="dropdownLegal"
             value={quantitySelected}
             label="Escolha a quantidade de sócios"
             onChange={onChangeQuantity}
-          /> */}
+          />
         </Col>
       </Row>
     </Grid>
     <br />
-    <Row stretch>
-      <Col
-        desk={2}
-        palm={2}
-        tablet={2}
-        tv={2}
-      >
-        <FormInput
-          size={30}
-          maxLength={30}
-          inputStyle="form"
-          type="text"
-          label="Nome"
-          // value={inputLegalEmail}
-          // onChange={onChangeLegalEmail}
-        />
-      </Col>
-      <Col
-        desk={2}
-        palm={2}
-        tablet={2}
-        tv={2}
-      >
-        <FormInput
-          size={30}
-          maxLength={30}
-          inputStyle="form"
-          type="text"
-          label="CPF"
-          // value={inputLegalUrl}
-          // onChange={onChangeLegalUrl}
-        />
-      </Col>
-      <Col
-        desk={1}
-        palm={1}
-        tablet={1}
-        tv={1}
-      >
-        <FormInput
-          size={30}
-          maxLength={30}
-          inputStyle="form"
-          type="text"
-          label="E-mail"
-          // value={inputLegalPhone}
-          // onChange={onChangeLegalPhone}
-        />
-      </Col>
-    </Row>
+    <RecipientPartner
+      partnerName={partnerName}
+      partnerCpf={partnerCpf}
+      partnerEmail={partnerEmail}
+      onChangePartnerName={onChangePartnerName}
+      onChangePartnerCpf={onChangePartnerCpf}
+      onChangePartnerEmail={onChangePartnerEmail}
+    />
   </CardContent>
 )
 
@@ -173,8 +138,14 @@ LegalPerson.propTypes = {
   onChangeLegalEmail: PropTypes.func,
   onChangeLegalUrl: PropTypes.func,
   onChangeLegalPhone: PropTypes.func,
-  // quantitySelected: PropTypes.string,
-  // onChangeQuantity: PropTypes.func,
+  quantitySelected: PropTypes.string,
+  onChangeQuantity: PropTypes.func,
+  partnerName: PropTypes.string,
+  partnerCpf: PropTypes.string,
+  partnerEmail: PropTypes.string,
+  onChangePartnerName: PropTypes.func,
+  onChangePartnerCpf: PropTypes.func,
+  onChangePartnerEmail: PropTypes.func,
 }
 
 LegalPerson.defaultProps = {
@@ -186,8 +157,14 @@ LegalPerson.defaultProps = {
   onChangeLegalEmail: onChangeEmail => onChangeEmail,
   onChangeLegalUrl: onChangeUrl => onChangeUrl,
   onChangeLegalPhone: onChangePhone => onChangePhone,
-  // quantitySelected: '',
-  // onChangeQuantity: onChangeQuantity => onChangeQuantity,
+  quantitySelected: '',
+  onChangeQuantity: onChangeQuantity => onChangeQuantity,
+  partnerName: '',
+  partnerCpf: '',
+  partnerEmail: '',
+  onChangePartnerName: onChangePartnerName => onChangePartnerName,
+  onChangePartnerCpf: onChangePartnerCpf => onChangePartnerCpf,
+  onChangePartnerEmail: onChangePartnerEmail => onChangePartnerEmail,
 }
 
 export default LegalPerson
