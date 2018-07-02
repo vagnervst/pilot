@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import {
   CardContent,
@@ -28,6 +28,30 @@ const LegalPerson = ({
   onChangePartnerName,
   onChangePartnerCpf,
   onChangePartnerEmail,
+  partnerNameTwo,
+  partnerCpfTwo,
+  partnerEmailTwo,
+  onChangePartnerNameTwo,
+  onChangePartnerCpfTwo,
+  onChangePartnerEmailTwo,
+  partnerNameThree,
+  partnerCpfThree,
+  partnerEmailThree,
+  onChangePartnerNameThree,
+  onChangePartnerCpfThree,
+  onChangePartnerEmailThree,
+  partnerNameFour,
+  partnerCpfFour,
+  partnerEmailFour,
+  onChangePartnerNameFour,
+  onChangePartnerCpfFour,
+  onChangePartnerEmailFour,
+  partnerNameFive,
+  partnerCpfFive,
+  partnerEmailFive,
+  onChangePartnerNameFive,
+  onChangePartnerCpfFive,
+  onChangePartnerEmailFive,
 }) => (
   <CardContent>
     <h2>Empresa</h2>
@@ -131,6 +155,135 @@ const LegalPerson = ({
       />
   // Para fazer o resto terei que criar ma variável para cada quantidade para cada RecipientPartner
     }
+    {quantitySelected === 'two' &&
+    <Fragment>
+      <RecipientPartner
+        partnerName={partnerName}
+        partnerCpf={partnerCpf}
+        partnerEmail={partnerEmail}
+        onChangePartnerName={onChangePartnerName}
+        onChangePartnerCpf={onChangePartnerCpf}
+        onChangePartnerEmail={onChangePartnerEmail}
+      />
+      <RecipientPartner
+        partnerName={partnerNameTwo}
+        partnerCpf={partnerCpfTwo}
+        partnerEmail={partnerEmailTwo}
+        onChangePartnerName={onChangePartnerNameTwo}
+        onChangePartnerCpf={onChangePartnerCpfTwo}
+        onChangePartnerEmail={onChangePartnerEmailTwo}
+      />
+    </Fragment>
+    }
+    {quantitySelected === 'three' &&
+    <Fragment>
+      <RecipientPartner
+        partnerName={partnerName}
+        partnerCpf={partnerCpf}
+        partnerEmail={partnerEmail}
+        onChangePartnerName={onChangePartnerName}
+        onChangePartnerCpf={onChangePartnerCpf}
+        onChangePartnerEmail={onChangePartnerEmail}
+      />
+      <RecipientPartner
+        partnerName={partnerNameTwo}
+        partnerCpf={partnerCpfTwo}
+        partnerEmail={partnerEmailTwo}
+        onChangePartnerName={onChangePartnerNameTwo}
+        onChangePartnerCpf={onChangePartnerCpfTwo}
+        onChangePartnerEmail={onChangePartnerEmailTwo}
+      />
+      <RecipientPartner
+        partnerName={partnerNameThree}
+        partnerCpf={partnerCpfThree}
+        partnerEmail={partnerEmailThree}
+        onChangePartnerName={onChangePartnerNameThree}
+        onChangePartnerCpf={onChangePartnerCpfThree}
+        onChangePartnerEmail={onChangePartnerEmailThree}
+      />
+    </Fragment>
+    }
+    {quantitySelected === 'four' &&
+    <Fragment>
+      <RecipientPartner
+        partnerName={partnerName}
+        partnerCpf={partnerCpf}
+        partnerEmail={partnerEmail}
+        onChangePartnerName={onChangePartnerName}
+        onChangePartnerCpf={onChangePartnerCpf}
+        onChangePartnerEmail={onChangePartnerEmail}
+      />
+      <RecipientPartner
+        partnerName={partnerNameTwo}
+        partnerCpf={partnerCpfTwo}
+        partnerEmail={partnerEmailTwo}
+        onChangePartnerName={onChangePartnerNameTwo}
+        onChangePartnerCpf={onChangePartnerCpfTwo}
+        onChangePartnerEmail={onChangePartnerEmailTwo}
+      />
+      <RecipientPartner
+        partnerName={partnerNameThree}
+        partnerCpf={partnerCpfThree}
+        partnerEmail={partnerEmailThree}
+        onChangePartnerName={onChangePartnerNameThree}
+        onChangePartnerCpf={onChangePartnerCpfThree}
+        onChangePartnerEmail={onChangePartnerEmailThree}
+      />
+      <RecipientPartner
+        partnerName={partnerNameFour}
+        partnerCpf={partnerCpfFour}
+        partnerEmail={partnerEmailFour}
+        onChangePartnerName={onChangePartnerNameFour}
+        onChangePartnerCpf={onChangePartnerCpfFour}
+        onChangePartnerEmail={onChangePartnerEmailFour}
+      />
+    </Fragment>
+    }
+    {quantitySelected === 'five' &&
+    <Fragment>
+      <RecipientPartner
+        partnerName={partnerName}
+        partnerCpf={partnerCpf}
+        partnerEmail={partnerEmail}
+        onChangePartnerName={onChangePartnerName}
+        onChangePartnerCpf={onChangePartnerCpf}
+        onChangePartnerEmail={onChangePartnerEmail}
+      />
+      <RecipientPartner
+        partnerName={partnerNameTwo}
+        partnerCpf={partnerCpfTwo}
+        partnerEmail={partnerEmailTwo}
+        onChangePartnerName={onChangePartnerNameTwo}
+        onChangePartnerCpf={onChangePartnerCpfTwo}
+        onChangePartnerEmail={onChangePartnerEmailTwo}
+      />
+      <RecipientPartner
+        partnerName={partnerNameThree}
+        partnerCpf={partnerCpfThree}
+        partnerEmail={partnerEmailThree}
+        onChangePartnerName={onChangePartnerNameThree}
+        onChangePartnerCpf={onChangePartnerCpfThree}
+        onChangePartnerEmail={onChangePartnerEmailThree}
+      />
+      <RecipientPartner
+        partnerName={partnerNameFour}
+        partnerCpf={partnerCpfFour}
+        partnerEmail={partnerEmailFour}
+        onChangePartnerName={onChangePartnerNameFour}
+        onChangePartnerCpf={onChangePartnerCpfFour}
+        onChangePartnerEmail={onChangePartnerEmailFour}
+      />
+      <RecipientPartner
+        partnerName={partnerNameFive}
+        partnerCpf={partnerCpfFive}
+        partnerEmail={partnerEmailFive}
+        onChangePartnerName={onChangePartnerNameFive}
+        onChangePartnerCpf={onChangePartnerCpfFive}
+        onChangePartnerEmail={onChangePartnerEmailFive}
+      />
+    </Fragment>
+    }
+
   </CardContent>
 )
 
@@ -151,6 +304,30 @@ LegalPerson.propTypes = {
   onChangePartnerName: PropTypes.func,
   onChangePartnerCpf: PropTypes.func,
   onChangePartnerEmail: PropTypes.func,
+  partnerNameTwo: PropTypes.string,
+  partnerCpfTwo: PropTypes.string,
+  partnerEmailTwo: PropTypes.string,
+  onChangePartnerNameTwo: PropTypes.func,
+  onChangePartnerCpfTwo: PropTypes.func,
+  onChangePartnerEmailTwo: PropTypes.func,
+  partnerNameThree: PropTypes.string,
+  partnerCpfThree: PropTypes.string,
+  partnerEmailThree: PropTypes.string,
+  onChangePartnerNameThree: PropTypes.func,
+  onChangePartnerCpfThree: PropTypes.func,
+  onChangePartnerEmailThree: PropTypes.func,
+  partnerNameFour: PropTypes.string,
+  partnerCpfFour: PropTypes.string,
+  partnerEmailFour: PropTypes.string,
+  onChangePartnerNameFour: PropTypes.func,
+  onChangePartnerCpfFour: PropTypes.func,
+  onChangePartnerEmailFour: PropTypes.func,
+  partnerNameFive: PropTypes.string,
+  partnerCpfFive: PropTypes.string,
+  partnerEmailFive: PropTypes.string,
+  onChangePartnerNameFive: PropTypes.func,
+  onChangePartnerCpfFive: PropTypes.func,
+  onChangePartnerEmailFive: PropTypes.func,
   numbers: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
@@ -175,6 +352,30 @@ LegalPerson.defaultProps = {
   onChangePartnerName: onChangePartnerName => onChangePartnerName,
   onChangePartnerCpf: onChangePartnerCpf => onChangePartnerCpf,
   onChangePartnerEmail: onChangePartnerEmail => onChangePartnerEmail,
+  partnerNameTwo: '',
+  partnerCpfTwo: '',
+  partnerEmailTwo: '',
+  onChangePartnerNameTwo: onChangePartnerNameTwo => onChangePartnerNameTwo,
+  onChangePartnerCpfTwo: onChangePartnerCpfTwo => onChangePartnerCpfTwo,
+  onChangePartnerEmailTwo: onChangePartnerEmailTwo => onChangePartnerEmailTwo,
+  partnerNameThree: '',
+  partnerCpfThree: '',
+  partnerEmailThree: '',
+  onChangePartnerNameThree: onChangePartnerNameThree => onChangePartnerNameThree,
+  onChangePartnerCpfThree: onChangePartnerCpfThree => onChangePartnerCpfThree,
+  onChangePartnerEmailThree: onChangePartnerEmailThree => onChangePartnerEmailThree,
+  partnerNameFour: '',
+  partnerCpfFour: '',
+  partnerEmailFour: '',
+  onChangePartnerNameFour: onChangePartnerNameFour => onChangePartnerNameFour,
+  onChangePartnerCpfFour: onChangePartnerCpfFour => onChangePartnerCpfFour,
+  onChangePartnerEmailFour: onChangePartnerEmailFour => onChangePartnerEmailFour,
+  partnerNameFive: '',
+  partnerCpfFive: '',
+  partnerEmailFive: '',
+  onChangePartnerNameFive: onChangePartnerNameFive => onChangePartnerNameFive,
+  onChangePartnerCpfFive: onChangePartnerCpfFive => onChangePartnerCpfFive,
+  onChangePartnerEmailFive: onChangePartnerEmailFive => onChangePartnerEmailFive,
 }
 
 export default LegalPerson

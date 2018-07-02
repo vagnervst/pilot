@@ -37,6 +37,18 @@ class RecipientStep extends Component {
     this.handlePartnerName = this.handlePartnerName.bind(this)
     this.handlePartnerCpf = this.handlePartnerCpf.bind(this)
     this.handlePartnerEmail = this.handlePartnerEmail.bind(this)
+    this.handlePartnerNameTwo = this.handlePartnerNameTwo.bind(this)
+    this.handlePartnerCpfTwo = this.handlePartnerCpfTwo.bind(this)
+    this.handlePartnerEmailTwo = this.handlePartnerEmailTwo.bind(this)
+    this.handlePartnerNameThree = this.handlePartnerNameThree.bind(this)
+    this.handlePartnerCpfThree = this.handlePartnerCpfThree.bind(this)
+    this.handlePartnerEmailThree = this.handlePartnerEmailThree.bind(this)
+    this.handlePartnerNameFour = this.handlePartnerNameFour.bind(this)
+    this.handlePartnerCpfFour = this.handlePartnerCpfFour.bind(this)
+    this.handlePartnerEmailFour = this.handlePartnerEmailFour.bind(this)
+    this.handlePartnerNameFive = this.handlePartnerNameFive.bind(this)
+    this.handlePartnerCpfFive = this.handlePartnerCpfFive.bind(this)
+    this.handlePartnerEmailFive = this.handlePartnerEmailFive.bind(this)
   }
 
   handleChange (event) {
@@ -124,6 +136,78 @@ class RecipientStep extends Component {
     })
   }
 
+  handlePartnerNameTwo (event) {
+    this.setState({
+      partnerNameTwo: event.target.value,
+    })
+  }
+
+  handlePartnerCpfTwo (event) {
+    this.setState({
+      partnerCpfTwo: event.target.value,
+    })
+  }
+
+  handlePartnerEmailTwo (event) {
+    this.setState({
+      partnerEmailTwo: event.target.value,
+    })
+  }
+
+  handlePartnerNameThree (event) {
+    this.setState({
+      partnerNameThree: event.target.value,
+    })
+  }
+
+  handlePartnerCpfThree (event) {
+    this.setState({
+      partnerCpfThree: event.target.value,
+    })
+  }
+
+  handlePartnerEmailThree (event) {
+    this.setState({
+      partnerEmailThree: event.target.value,
+    })
+  }
+
+  handlePartnerNameFour (event) {
+    this.setState({
+      partnerNameFour: event.target.value,
+    })
+  }
+
+  handlePartnerCpfFour (event) {
+    this.setState({
+      partnerCpfFour: event.target.value,
+    })
+  }
+
+  handlePartnerEmailFour (event) {
+    this.setState({
+      partnerEmailFour: event.target.value,
+    })
+  }
+
+  handlePartnerNameFive (event) {
+    this.setState({
+      partnerNameFive: event.target.value,
+    })
+  }
+
+  handlePartnerCpfFive (event) {
+    this.setState({
+      partnerCpfFive: event.target.value,
+    })
+  }
+
+  handlePartnerEmailFive (event) {
+    this.setState({
+      partnerEmailFive: event.target.value,
+    })
+  }
+
   // handleSubmit(event) {
   //   alert('A name was submitted: ' + this.input.current.value);
   //   event.preventDefault();
@@ -152,6 +236,18 @@ class RecipientStep extends Component {
       partnerName,
       partnerCpf,
       partnerEmail,
+      partnerNameTwo,
+      partnerCpfTwo,
+      partnerEmailTwo,
+      partnerNameThree,
+      partnerCpfThree,
+      partnerEmailThree,
+      partnerNameFour,
+      partnerCpfFour,
+      partnerEmailFour,
+      partnerNameFive,
+      partnerCpfFive,
+      partnerEmailFive,
       quantitySelected,
     } = this.state
 
@@ -221,6 +317,30 @@ class RecipientStep extends Component {
               onChangePartnerName={this.handlePartnerName}
               onChangePartnerCpf={this.handlePartnerCpf}
               onChangePartnerEmail={this.handlePartnerEmail}
+              partnerNameTwo={partnerNameTwo}
+              partnerCpfTwo={partnerCpfTwo}
+              partnerEmailTwo={partnerEmailTwo}
+              onChangePartnerNameTwo={this.handlePartnerNameTwo}
+              onChangePartnerCpfTwo={this.handlePartnerCpfTwo}
+              onChangePartnerEmailTwo={this.handlePartnerEmailTwo}
+              partnerNameThree={partnerNameThree}
+              partnerCpfThree={partnerCpfThree}
+              partnerEmailThree={partnerEmailThree}
+              onChangePartnerNameThree={this.handlePartnerNameThree}
+              onChangePartnerCpfThree={this.handlePartnerCpfThree}
+              onChangePartnerEmailThree={this.handlePartnerEmailThree}
+              partnerNameFour={partnerNameFour}
+              partnerCpfFour={partnerCpfFour}
+              partnerEmailFour={partnerEmailFour}
+              onChangePartnerNameFour={this.handlePartnerNameFour}
+              onChangePartnerCpfFour={this.handlePartnerCpfFour}
+              onChangePartnerEmailFour={this.handlePartnerEmailFour}
+              partnerNameFive={partnerNameFive}
+              partnerCpfFive={partnerCpfFive}
+              partnerEmailFive={partnerEmailFive}
+              onChangePartnerNameFive={this.handlePartnerNameFive}
+              onChangePartnerCpfFive={this.handlePartnerCpfFive}
+              onChangePartnerEmailFive={this.handlePartnerEmailFive}
               quantitySelected={quantitySelected}
             />
           }

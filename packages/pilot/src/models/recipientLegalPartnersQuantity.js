@@ -20,7 +20,7 @@ export default {
     },
     {
       name: '4',
-      value: 'for',
+      value: 'four',
     },
     {
       name: '5',
