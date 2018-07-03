@@ -3,7 +3,6 @@
 # Pilot
 
 [![Join the chat at https://gitter.im/pagarme/react-event-components](https://badges.gitter.im/pagarme/pilot.svg)](https://gitter.im/pagarme/pilot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-A próxima versão da Dashboard Pagar.me
 
 <br>
 
