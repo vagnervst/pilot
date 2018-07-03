@@ -860,7 +860,23 @@
         }
       },
       "recipient": {
-        "status": "Status",
+        "anticipatable_volume_percentage": "Volume antecipado",
+        "automatic_anticipation_1025_delay": "Antecipação 10/25 (delay)",
+        "automatic_anticipation_days": "Antecipação 10/25 (dias)",
+        "automatic_anticipation_enabled": "Antecipação automática",
+        "automatic_anticipation_type_of": {
+          "full": "Completa",
+          "1025": "10/25"
+        },
+        "automatic_anticipation_type": "Tipo de antecipação automática:",
+        "bank_account_document_number": "Número do Documento",
+        "bank_account_document_type": "Tipo",
+        "bank_account_id": "Id da Conta Bancária",
+        "bank_account_legal_name": "Nome da Conta Bancária",
+        "date_created": "Data de Criação",
+        "date_updated": "Data da atualização",
+        "details": "Detalhes",
+        "id": "Id do Recebedor",
         "status_of": {
           "active": "Ativo",
           "affiliation": "Em Afiliação",
@@ -871,31 +887,15 @@
           "registration": "Em Credenciamento",
           "suspended": "Temporariamente Suspenso"
         },
-        "id": "Id do Recebedor",
-        "bank_account_id": "Id da Conta Bancária",
-        "bank_account_legal_name": "Nome da Conta Bancária",
-        "bank_account_document_number": "Número do Documento",
-        "bank_account_document_type": "Tipo",
-        "date_created": "Data de Criação",
-        "automatic_anticipation_enabled": "Antecipação automática",
-        "automatic_anticipation_1025_delay": "Antecipação 10/25 (delay)",
-        "automatic_anticipation_days": "Antecipação 10/25 (dias)",
-        "automatic_anticipation_type": "Tipo de antecipação automática:",
-        "automatic_anticipation_type_of": {
-          "full": "Completa",
-          "1025": "10/25"
-        },
-        "anticipatable_volume_percentage": "Volume antecipado",
+        "status": "Status",
+        "transfer_day": "Dia da transferência",
         "transfer_enabled": "Transferência habilitada",
-        "transfer_interval": "Intervalo de transferência",
         "transfer_interval_of": {
           "daily": "Diária",
           "weekly": "Semanal",
           "monthly": "Mensal"
         },
-        "transfer_day": "Dia da transferência",
-        "date_updated": "Data da atualização",
-        "details": "Detalhes"
+        "transfer_interval": "Intervalo de transferência"
       }
     }
   }
