@@ -17,9 +17,9 @@ Pagar.me, e consigam focar no seu negócio!
 
 ## Índice
 
-- [Tecnologia utilizada](tecnologia-utilizada)
+- [Tecnologia utilizada](#tecnologia-utilizada)
 - [Requisitos](#requisitos)
-- [Desenvolvimento](#developing)
+- [Desenvolvimento](#desenvolvimento)
 	- [Clonando o repositório](#clonando-o-repositorio)
 	- [Rodando o servidor](#rodando-o-servidor)
 - [Cockpit](#cockpit)
