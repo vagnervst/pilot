@@ -20,7 +20,7 @@ Pagar.me, e consigam focar no seu negócio!
 - [Tecnologia utilizada](#tecnologia-utilizada)
 - [Requisitos](#requisitos)
 - [Desenvolvimento](#desenvolvimento)
-	- [Clonando o repositório](#clonando-o-repositorio)
+	- [Clonando o repositório](#clonando-o-repositório)
 	- [Rodando o servidor](#rodando-o-servidor)
 - [Cockpit](#cockpit)
 	- [Rodando testes no Cockpit](#rodando-testes-no-cockpit)
