@@ -34,7 +34,6 @@ class Filters extends Component {
       query: props.query,
     }
 
-    this.renderChildrenInput = this.renderChildrenInput.bind(this)
     this.handleFiltersSubmit = this.handleFiltersSubmit.bind(this)
     this.handleFiltersChange = this.handleFiltersChange.bind(this)
   }
@@ -55,12 +54,6 @@ class Filters extends Component {
 
   handleFiltersChange (query) {
     this.setState({ query })
-  }
-
-  renderChildrenInput (input) {
-    return React.cloneElement(input, {
-      disabled: this.props.disabled,
-    })
   }
 
   renderToolbar () {
