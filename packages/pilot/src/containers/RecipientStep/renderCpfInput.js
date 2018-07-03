@@ -9,12 +9,12 @@ import {
 } from 'former-kit'
 
 const CpfInput = ({
-  checked,
-  cpf,
+  // checked,
+  // cpf,
   disabled,
   error,
-  onChangeCpf,
-  onChangeCheckCpf,
+  // onChangeCpf,
+  // onChangeCheckCpf,
 }) => (
   <Fragment>
     <Grid>
@@ -22,11 +22,12 @@ const CpfInput = ({
         <Col>
           <FormInput
             size={30}
-            maxLength={30}
+            maxLength={11}
             inputStyle="form"
             label="CPF"
-            value={cpf}
-            onChange={onChangeCpf}
+            name="cpf"
+            // value={cpf}
+            // onChange={onChangeCpf}
           />
           <br />
           <br />
@@ -38,8 +39,8 @@ const CpfInput = ({
       name="info"
       error={error}
       disabled={disabled}
-      checked={checked}
-      onChange={onChangeCheckCpf}
+      // checked={checked}
+      // onChange={onChangeCheckCpf}
     />
   </Fragment>
 )
@@ -47,19 +48,19 @@ const CpfInput = ({
 CpfInput.propTypes = {
   disabled: PropTypes.bool,
   error: PropTypes.string,
-  checked: PropTypes.bool,
-  cpf: PropTypes.string,
-  onChangeCpf: PropTypes.func,
-  onChangeCheckCpf: PropTypes.func,
+  // checked: PropTypes.bool,
+  // cpf: PropTypes.string,
+  // onChangeCpf: PropTypes.func,
+  // onChangeCheckCpf: PropTypes.func,
 }
 
 CpfInput.defaultProps = {
   disabled: false,
   error: '',
-  checked: false,
-  cpf: '',
-  onChangeCpf: onChangeCpf => onChangeCpf,
-  onChangeCheckCpf: onChangeCheckCpf => onChangeCheckCpf,
+  // checked: false,
+  // cpf: '',
+  // onChangeCpf: onChangeCpf => onChangeCpf,
+  // onChangeCheckCpf: onChangeCheckCpf => onChangeCheckCpf,
 }
 
 export default CpfInput

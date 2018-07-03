@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Form from 'react-vanilla-form'
 import {
   Button,
   Card,
@@ -14,6 +15,14 @@ import LegalPerson from './renderLegalPerson'
 import recipientTypes from '../../models/recipientTypes'
 import styles from './style.css'
 
+function required (value) {
+  return value ? false : 'This field is required!'
+}
+
+function isNumber (value) {
+  return parseInt(value, 10) ? false : 'Should be a number'
+}
+
 class RecipientStep extends Component {
   constructor (props) {
     super(props)
@@ -25,6 +34,8 @@ class RecipientStep extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleCheck = this.handleCheck.bind(this)
+    // this.handleChangeCpf = this.handleChangeCpf.bind(this)
+    this.handleChangeCnpj = this.handleChangeCnpj.bind(this)
     this.handleChangeName = this.handleChangeName.bind(this)
     this.handleChangeEmail = this.handleChangeEmail.bind(this)
     this.handleChangeUrl = this.handleChangeUrl.bind(this)
@@ -66,6 +77,18 @@ class RecipientStep extends Component {
   handleChangeName (event) {
     this.setState({
       inputName: event.target.value,
+    })
+  }
+
+  // handleChangeCpf (event) {
+  //   this.setState({
+  //     cpf: event.target.value,
+  //   })
+  // }
+
+  handleChangeCnpj (event) {
+    this.setState({
+      cnpj: event.target.value,
     })
   }
 
@@ -223,7 +246,7 @@ class RecipientStep extends Component {
     const {
       value,
       checked,
-      cpf,
+      // cpf,
       cnpj,
       inputName,
       inputEmail,
@@ -253,103 +276,127 @@ class RecipientStep extends Component {
 
     return (
       <div>
-        <Card>
-          <CardContent>
-            {this.handleChangeLabelCheck}
-            <h2>Identificação</h2>
-            <h3>
-            Escolha qual tipo de pessoa do seu recebedor e preencha o documento
-            </h3>
-            <span className={styles.spanRadioBtn}>Tipo de recebedor</span>
-            <RadioGroup
-              options={recipientTypes}
-              name={name}
-              onChange={this.handleChange}
-              value={value}
-              disabled={disabled}
-              error={error}
-            />
-            {value === 'physic' &&
-              <CpfInput
-                cpf={cpf}
-                // os dois não aparecem juntos
-                checked={checked}
-                onChangeCheckCpf={this.handleCheck}
+        <Form
+          onSubmit={console.log}
+          data={{
+            cpf: '',
+            info: false,
+          }}
+          validation={{
+            name: required,
+            cpf: [required, isNumber],
+          }}
+        >
+          <Card>
+            <CardContent>
+              {this.handleChangeLabelCheck}
+              <h2>Identificação</h2>
+              <h3>
+              Escolha qual tipo de pessoa do seu recebedor e preencha o documento
+              </h3>
+              <span className={styles.spanRadioBtn}>Tipo de recebedor</span>
+              <RadioGroup
+                options={recipientTypes}
+                name={name}
+                onChange={this.handleChange}
+                value={value}
+                disabled={disabled}
+                error={error}
+              />
+              {/* {value === 'physic' &&
+                <CpfInput
+                  cpf={cpf}
+                  checked={checked}
+                  onChangeCpf={this.handleChangeCpf}
+                  onChangeCheckCpf={this.handleCheck}
+                />} */}
+              { value === 'physic' &&
+                <CpfInput />
+              }
+              {value === 'legal' &&
+                <CnpjInput
+                  cnpj={cnpj}
+                  checked={checked}
+                  onChangeCnpj={this.handleChangeCnpj}
+                  onChangeCheckCnpj={this.handleCheck}
+                />}
+              <br />
+              <br />
+            </CardContent>
+            {checked && value === 'physic' &&
+              <PhysicPerson
+                inputName={inputName}
+                inputEmail={inputEmail}
+                inputUrl={inputUrl}
+                inputPhone={inputPhone}
+                onChangeName={this.handleChangeName}
+                onChangeEmail={this.handleChangeEmail}
+                onChangeUrl={this.handleChangeUrl}
+                onChangePhone={this.handleChangePhone}
+                // master, saque e estorno
+                // como cria o componente e como manipula as propriedades que eles usam
               />}
-            {value === 'legal' &&
-              <CnpjInput
-                cnpj={cnpj}
-                checked={checked}
-                onChangeCheckCnpj={this.handleCheck}
-              />}
+            {checked && value === 'legal' &&
+              <LegalPerson
+                inputLegalName={inputLegalName}
+                inputLegalEmail={inputLegalEmail}
+                inputLegalUrl={inputLegalUrl}
+                inputLegalPhone={inputLegalPhone}
+                onChangeLegalName={this.handleChangeLegalName}
+                onChangeLegalEmail={this.handleChangeLegalEmail}
+                onChangeLegalUrl={this.handleChangeLegalUrl}
+                onChangeLegalPhone={this.handleChangeLegalPhone}
+                value={this.state.quantitySelected}
+                onChangeQuantity={this.handleQuantity}
+                numbers={this.props.numbers}
+                partnerName={partnerName}
+                partnerCpf={partnerCpf}
+                partnerEmail={partnerEmail}
+                onChangePartnerName={this.handlePartnerName}
+                onChangePartnerCpf={this.handlePartnerCpf}
+                onChangePartnerEmail={this.handlePartnerEmail}
+                partnerNameTwo={partnerNameTwo}
+                partnerCpfTwo={partnerCpfTwo}
+                partnerEmailTwo={partnerEmailTwo}
+                onChangePartnerNameTwo={this.handlePartnerNameTwo}
+                onChangePartnerCpfTwo={this.handlePartnerCpfTwo}
+                onChangePartnerEmailTwo={this.handlePartnerEmailTwo}
+                partnerNameThree={partnerNameThree}
+                partnerCpfThree={partnerCpfThree}
+                partnerEmailThree={partnerEmailThree}
+                onChangePartnerNameThree={this.handlePartnerNameThree}
+                onChangePartnerCpfThree={this.handlePartnerCpfThree}
+                onChangePartnerEmailThree={this.handlePartnerEmailThree}
+                partnerNameFour={partnerNameFour}
+                partnerCpfFour={partnerCpfFour}
+                partnerEmailFour={partnerEmailFour}
+                onChangePartnerNameFour={this.handlePartnerNameFour}
+                onChangePartnerCpfFour={this.handlePartnerCpfFour}
+                onChangePartnerEmailFour={this.handlePartnerEmailFour}
+                partnerNameFive={partnerNameFive}
+                partnerCpfFive={partnerCpfFive}
+                partnerEmailFive={partnerEmailFive}
+                onChangePartnerNameFive={this.handlePartnerNameFive}
+                onChangePartnerCpfFive={this.handlePartnerCpfFive}
+                onChangePartnerEmailFive={this.handlePartnerEmailFive}
+                quantitySelected={quantitySelected}
+              />
+            }
             <br />
-            <br />
-          </CardContent>
-          {checked && value === 'physic' &&
-            <PhysicPerson
-              inputName={inputName}
-              inputEmail={inputEmail}
-              inputUrl={inputUrl}
-              inputPhone={inputPhone}
-              onChangeName={this.handleChangeName}
-              onChangeEmail={this.handleChangeEmail}
-              onChangeUrl={this.handleChangeUrl}
-              onChangePhone={this.handleChangePhone}
-              // master, saque e estorno
-              // como cria o componente e como manipula as propriedades que eles usam
-            />}
-          {checked && value === 'legal' &&
-            <LegalPerson
-              inputLegalName={inputLegalName}
-              inputLegalEmail={inputLegalEmail}
-              inputLegalUrl={inputLegalUrl}
-              inputLegalPhone={inputLegalPhone}
-              onChangeLegalName={this.handleChangeLegalName}
-              onChangeLegalEmail={this.handleChangeLegalEmail}
-              onChangeLegalUrl={this.handleChangeLegalUrl}
-              onChangeLegalPhone={this.handleChangeLegalPhone}
-              value={this.state.quantitySelected}
-              onChangeQuantity={this.handleQuantity}
-              numbers={this.props.numbers}
-              partnerName={partnerName}
-              partnerCpf={partnerCpf}
-              partnerEmail={partnerEmail}
-              onChangePartnerName={this.handlePartnerName}
-              onChangePartnerCpf={this.handlePartnerCpf}
-              onChangePartnerEmail={this.handlePartnerEmail}
-              partnerNameTwo={partnerNameTwo}
-              partnerCpfTwo={partnerCpfTwo}
-              partnerEmailTwo={partnerEmailTwo}
-              onChangePartnerNameTwo={this.handlePartnerNameTwo}
-              onChangePartnerCpfTwo={this.handlePartnerCpfTwo}
-              onChangePartnerEmailTwo={this.handlePartnerEmailTwo}
-              partnerNameThree={partnerNameThree}
-              partnerCpfThree={partnerCpfThree}
-              partnerEmailThree={partnerEmailThree}
-              onChangePartnerNameThree={this.handlePartnerNameThree}
-              onChangePartnerCpfThree={this.handlePartnerCpfThree}
-              onChangePartnerEmailThree={this.handlePartnerEmailThree}
-              partnerNameFour={partnerNameFour}
-              partnerCpfFour={partnerCpfFour}
-              partnerEmailFour={partnerEmailFour}
-              onChangePartnerNameFour={this.handlePartnerNameFour}
-              onChangePartnerCpfFour={this.handlePartnerCpfFour}
-              onChangePartnerEmailFour={this.handlePartnerEmailFour}
-              partnerNameFive={partnerNameFive}
-              partnerCpfFive={partnerCpfFive}
-              partnerEmailFive={partnerEmailFive}
-              onChangePartnerNameFive={this.handlePartnerNameFive}
-              onChangePartnerCpfFive={this.handlePartnerCpfFive}
-              onChangePartnerEmailFive={this.handlePartnerEmailFive}
-              quantitySelected={quantitySelected}
-            />
-          }
-          <br />
-          <CardActions>
-            <Button fill="outline">Cancelar</Button>
-            <Button fill="gradient">Continuar</Button>
-          </CardActions>
-        </Card>
+            <CardActions>
+              <Button type="button" fill="outline">Cancelar</Button>
+              <Button type="submit" fill="gradient">Continuar</Button>
+            </CardActions>
+          </Card>
+        </Form>
+        {this.state.result &&
+        <pre>
+          <code>
+          Result:<br />
+            {JSON.stringify(this.state.result, null, 2)}
+          </code>
+        </pre>
+      }
       </div>
     )
   }
@@ -364,6 +411,10 @@ RecipientStep.propTypes = {
       name: PropTypes.string.isRequired,
       value: PropTypes.string.isRequired,
     })).isRequired,
+  // data: PropTypes.shape({
+  //   name: PropTypes.string.isRequired,
+  //   value: PropTypes.string.isRequired,
+  // }).isRequired,
 }
 
 RecipientStep.defaultProps = {
