@@ -2,21 +2,18 @@
 
 # Pilot
 
+[![Join the chat at https://gitter.im/pagarme/react-event-components](https://badges.gitter.im/pagarme/pilot.svg)](https://gitter.im/pagarme/pilot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 A próxima versão da Dashboard Pagar.me
 
 <br>
 
-[![Join the chat at https://gitter.im/pagarme/react-event-components](https://badges.gitter.im/pagarme/pilot.svg)](https://gitter.im/pagarme/pilot?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+A próxima versão da Dashboard Pagar.me
 <br>
 
 
-Pilot é o codinome da nova dashboard do Pagar.me. O produto foi criado
-a partir de feedbacks dos usuários, para que eles possam ter uma
-experiência cada vez mais transparente de sua operação financeira no
-Pagar.me, e consigam focar no seu negócio!
-
 ## Índice
 
+- [Introdução](#introdução)
 - [Tecnologia utilizada](#tecnologia-utilizada)
 - [Requisitos](#requisitos)
 - [Desenvolvimento](#desenvolvimento)
@@ -26,6 +23,13 @@ Pagar.me, e consigam focar no seu negócio!
 	- [Rodando testes no Cockpit](#rodando-testes-no-cockpit)
 - [Contribuindo](#contribuindo)
 - [Licenças](#licencas)
+
+## Introdução 
+
+Pilot é o codinome da nova dashboard do Pagar.me. O produto foi criado
+a partir de feedbacks dos usuários, para que eles possam ter uma
+experiência cada vez mais transparente de sua operação financeira no
+Pagar.me, e consigam focar no seu negócio!
 
 ## Tecnologia utilizada
 
