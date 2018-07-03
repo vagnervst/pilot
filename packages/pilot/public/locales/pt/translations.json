@@ -862,14 +862,14 @@
       "recipient": {
         "status": "Status",
         "status_of": {
-          "processing": "Em Processando",
-          "registration": "Em Credenciamento",
-          "affiliation": "Em Afiliação",
           "active": "Ativo",
-          "refused": "Recusado",
-          "suspended": "Temporariamente Suspenso",
+          "affiliation": "Em Afiliação",
           "blocked": "Temporariamente Bloqueado",
-          "inactive": "Permanentemente Desativado"
+          "inactive": "Permanentemente Desativado",
+          "processing": "Processando",
+          "refused": "Recusado",
+          "registration": "Em Credenciamento",
+          "suspended": "Temporariamente Suspenso"
         },
         "id": "Id do Recebedor",
         "bank_account_id": "Id da Conta Bancária",
