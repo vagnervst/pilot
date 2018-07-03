@@ -23,7 +23,6 @@ Pagar.me, e consigam focar no seu negócio!
 	- [Clonando o repositório](#clonando-o-repositorio)
 	- [Rodando o servidor](#rodando-o-servidor)
 - [Cockpit](#cockpit)
-	- [O que é?](#o-que-é)
 	- [Rodando testes no Cockpit](#rodando-testes-no-cockpit)
 - [Contribuindo](#contribuindo)
 - [Licenças](#licencas)
@@ -81,18 +80,18 @@ yarn start
 
 ## Cockpit
 
-### O que é?
-
 ![cockpit-data-flow](https://user-images.githubusercontent.com/20358128/42246516-48de3114-7ef3-11e8-8428-8b3462b7eb92.png)
 
 O Cockpit é nossa biblioteca para efetuar requests a serviços externos e devolver os dados retornados em um formato estruturado para serem utilizados nas páginas da Pilot. Atualmente, a principal função do Cockpit e fazer a comunicação com a API utilizando o [pagarme-js](https://github.com/pagarme/pagarme-js). Porém, sua estrutura permite interação também com outros serviços, caso haja necessidade. Uma request ao Cockpit equivale a uma ou mais requests na API, onde o dado retornado será tratado para ser renderizado na Pilot.
 
 ### Rodando testes no Cockpit
 
+Entre no diretório do Cockpit:
 ```
 cd packages/cockpit
 ```
 
+Inicie os testes:
 ```
 yarn test
 ```
