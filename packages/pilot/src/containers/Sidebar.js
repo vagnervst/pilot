@@ -1,6 +1,11 @@
 /* eslint-disable */
 import React from 'react'
 import PropTypes from 'prop-types'
+import { propOr } from 'ramda'
+
+import SidebarSections from '../components/SidebarSections'
+import SidebarSummary from '../components/SidebarSummary'
+import formatDecimalCurrency from '../formatters/decimalCurrency'
 
 import {
   Sidebar,
@@ -9,13 +14,15 @@ import {
   SidebarLinks,
 } from 'former-kit'
 
-import Menu32 from 'emblematic-icons/svg/Menu32.svg'
+import IconMenu from 'emblematic-icons/svg/Menu32.svg'
+import IconWallet from 'emblematic-icons/svg/Wallet32.svg'
 
 class SidebarContainer extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
       collapsed: false,
+      summaryCollapsed: true,
     }
 
     this.handleToggleSidebar = this.handleToggleSidebar.bind(this)
@@ -27,22 +34,70 @@ class SidebarContainer extends React.Component {
   }
 
   render () {
-    const { collapsed } = this.state
     const {
+      collapsed,
+      summaryCollapsed,
+    } = this.state
+    const {
+      balance,
+      companyName,
       links,
       logo: Logo,
+      onAnticipate,
       onLinkClick,
+      onWithdraw,
       t,
     } = this.props
+
+    const available = propOr(null, 'available', balance)
+    const waitingFunds = propOr(null, 'waitingFunds', balance)
+    
     return (
       <Sidebar collapsed={collapsed}>
         <SidebarHeader>
           {!collapsed && <Logo width="140" />}
           <button onClick={this.handleToggleSidebar}>
-            <Menu32 width={16} height={16} />
+            <IconMenu width={16} height={16} />
           </button>
         </SidebarHeader>
+
+        {!collapsed &&
+          <SidebarSummary
+            collapsed={summaryCollapsed}
+            onClick={() => this.setState({ summaryCollapsed: !summaryCollapsed })}
+            subtitle={
+              summaryCollapsed
+                ? t('pages.sidebar.show_balance')
+                : t('pages.sidebar.hide_balance')
+            }
+            title={companyName}
+          >
+            <SidebarSections
+              sections={[
+                {
+                  action: onWithdraw,
+                  actionTitle: t('pages.sidebar.withdraw'),
+                  title: t('pages.sidebar.available'),
+                  value: <span><small>{t('pages.sidebar.currency_symbol')}</small> {formatDecimalCurrency(available)}</span>,
+                },
+                {
+                  action: onAnticipate,
+                  actionTitle: t('pages.sidebar.anticipation'),
+                  title: t('pages.sidebar.waiting_funds'),
+                  value: <span><small>{t('pages.sidebar.currency_symbol')}</small> {formatDecimalCurrency(waitingFunds)}</span>,
+                },
+              ]}
+            />
+          </SidebarSummary>
+        }
+
         <SidebarLinks>
+          {collapsed &&
+            <SidebarLink
+              icon={<IconWallet width={16} height={16} />}
+            />
+          }
+
           {links.map(({
             active,
             icon: Icon,
@@ -66,6 +121,11 @@ class SidebarContainer extends React.Component {
 }
 
 SidebarContainer.propTypes = {
+  balance: PropTypes.shape({
+    available: PropTypes.number,
+    waitingFunds: PropTypes.number,
+  }).isRequired,
+  companyName: PropTypes.string,
   links: PropTypes.arrayOf(PropTypes.shape({
     active: PropTypes.bool,
     title: PropTypes.string,
@@ -76,6 +136,10 @@ SidebarContainer.propTypes = {
   logo: PropTypes.func.isRequired,
   onLinkClick: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
+}
+
+SidebarContainer.defaultProps = {
+  companyName: '',
 }
 
 export default SidebarContainer
