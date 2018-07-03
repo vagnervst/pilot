@@ -2,14 +2,14 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 import {
+  Button,
   Card,
   CardActions,
   CardContent,
   CardSection,
-  Button,
-  Row,
-  Col,
   CheckboxGroup,
+  Col,
+  Row,
 } from 'former-kit'
 
 import Form from 'react-vanilla-form'
@@ -17,8 +17,8 @@ import Form from 'react-vanilla-form'
 import {
   anyPass,
   equals,
-  isNil,
   isEmpty,
+  isNil,
 } from 'ramda'
 
 import style from './style.css'
