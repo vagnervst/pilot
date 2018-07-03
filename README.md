@@ -17,19 +17,18 @@ Pagar.me, e consigam focar no seu negócio!
 
 ## Índice
 
-- [Introdução](#introducao)
 - [Tecnologia utilizada](tecnologia-utilizada)
 - [Requisitos](#requisitos)
 - [Desenvolvimento](#developing)
 	- [Clonando o repositório](#clonando-o-repositorio)
 	- [Rodando o servidor](#rodando-o-servidor)
 - [Cockpit](#cockpit)
-	- [O que é?](#o-que-e)
-	- [Rodando testes](#rodando-testes)
+	- [O que é?](#o-que-é)
+	- [Rodando testes no Cockpit](#rodando-testes-no-cockpit)
 - [Contribuindo](#contribuindo)
 - [Licenças](#licencas)
 
-### Tecnologia utilizada
+## Tecnologia utilizada
 
 A stack foi escolhida com base no que empresas como Facebook, AirBnb,
 e New York Times estão usando para construir suas experiências. Também foi
@@ -41,18 +40,18 @@ A estrutura do projeto foi iniciada rapidamente usando o [FormerKit Dashboard](h
 projeto que desenvolvemos baseado no Create React App para nos permitir
 criar rapidamente projetos de dashboards.
 
-### Requisitos
+## Requisitos
 
 Este repositório é um monorepo que aloja os pacotes que compõem o Pilot.
 Para instalar as dependências é necessário usar o
 [Yarn](https://yarnpkg.com/en) versão 1.0 ou superior, que suporta a
 funcionalidade de [Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
 
-### Desenvolvimento
+## Desenvolvimento
 
 Algumas instruções para desenvolver na Pilot:
 
-## Clonando o repositório
+### Clonando o repositório
 
 Clone o repositório:
 
@@ -60,7 +59,7 @@ Clone o repositório:
 git clone git@github.com:pagarme/pilot.git
 ```
 
-## Rodando o servidor
+### Rodando o servidor
 
 Use o Yarn para instalar as dependências:
 
