@@ -815,13 +815,13 @@
       "try_again": "Tente novamente com outros filtros."
     },
     "recipients": {
-      "title": "Recebedores",
       "count": "Número de recebedores",
-      "total_amount": "Total",
-      "text_search_placeholder": "Filtre por ID do recebedor, ID da conta bancária ou nome da conta",
-      "items_per_page": "{{count}} ítem por página",
       "items_per_page_plural": "{{count}} ítens por página",
+      "items_per_page": "{{count}} ítem por página",
       "no_results": "Não foram encontrados resultados para essa busca.",
+      "text_search_placeholder": "Filtre por ID do recebedor, ID da conta bancária ou nome da conta",
+      "title": "Recebedores",
+      "total_amount": "Total",
       "try_again": "Tente novamente com outros filtros"
     }
   },
