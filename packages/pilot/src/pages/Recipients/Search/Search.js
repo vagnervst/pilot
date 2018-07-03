@@ -11,16 +11,18 @@ import {
   contains,
   defaultTo,
   either,
+  flatten,
   identity,
   isEmpty,
   isNil,
   juxt,
   mergeAll,
+  of,
   path,
   pipe,
   tail,
-  without,
   when,
+  without,
 } from 'ramda'
 import {
   requestSearch,
@@ -187,9 +189,12 @@ class RecipientsSearch extends React.Component {
     return this.props.client
       .recipients
       .find(searchQuery)
+      .then(res => flatten(of(res)))
       .then((res) => {
         const result = {
-          total: res.length,
+          total: {
+            count: res.length,
+          },
           list: {
             rows: res,
           },
