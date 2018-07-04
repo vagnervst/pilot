@@ -133,8 +133,6 @@ RecipientsList.propTypes = {
   // eslint-disable-next-line
   query: PropTypes.shape({
     search: PropTypes.string,
-    // eslint-disable-next-line
-    properties: PropTypes.object,
   }),
   expandedRows: PropTypes.arrayOf(PropTypes.number).isRequired,
   filterOptions: PropTypes.arrayOf(PropTypes.shape({
