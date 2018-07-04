@@ -17,7 +17,7 @@ import {
 } from 'former-kit'
 
 import formatDate from '../../formatters/longDate'
-import renderStatusLegend from '../../containers/RecipientsList/renderStatusLegend'
+import renderStatusLegend from '../../containers/RecipientsList/statusLegend'
 
 const getDefaultColumns = ({ t }) => ([
   {
