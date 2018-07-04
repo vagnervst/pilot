@@ -7,6 +7,7 @@ import {
   CardActions,
   CardContent,
   CardSection,
+  Spacing,
   CheckboxGroup,
   Col,
   Row,
@@ -73,7 +74,7 @@ class Filters extends Component {
     return (
       <CardActions>
         {children}
-        <div className={style.spacer} />
+        <Spacing size="medium" />
         <Button
           relevance={filtersChanged ? 'normal' : 'low'}
           onClick={onClear}
