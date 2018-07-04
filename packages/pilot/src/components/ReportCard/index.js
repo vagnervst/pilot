@@ -99,22 +99,17 @@ class ReportCard extends React.Component {
 
   render () {
     const {
-      report,
       cardExpanded,
+      report,
+      subTitle,
+      title,
     } = this.props
     return (
-      <CardContent key={report.id}>
+      <CardContent>
         <CardSection>
           <CardSectionDoubleLineTitle
-            title={report.type}
-            subtitle={
-              <div>
-                Período: {moment(report.data.created_at).format('DD/MM/YYYY')} até {moment(report.data.updated_at).format('DD/MM/YYYY')} |
-                Criado: {moment(report.created_at).format('DD/MM/YYYY')}
-              </div>
-            }
-            collapsed={!cardExpanded}
             actions={renderActions(report)}
+            collapsed={!cardExpanded}
             icon={
               <Legend
                 color={reportStatusLegend[report.status].color}
@@ -123,6 +118,8 @@ class ReportCard extends React.Component {
               />
             }
             onClick={() => null}
+            subTitle={subTitle}
+            title={title}
           />
           {cardExpanded &&
             <div>
@@ -141,6 +138,8 @@ class ReportCard extends React.Component {
 }
 
 ReportCard.propTypes = {
+  cardExpanded: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
   report: PropTypes.shape({
     data: PropTypes.shape({
       company_id: PropTypes.string,
@@ -155,8 +154,8 @@ ReportCard.propTypes = {
     created_at: PropTypes.instanceOf(moment),
     updated_at: PropTypes.instanceOf(moment),
   }).isRequired,
-  cardExpanded: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
+  subTitle: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export default ReportCard

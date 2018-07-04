@@ -1,5 +1,6 @@
 import React from 'react'
 import ReportCard from '../../../src/components/ReportCard'
+import moment from 'moment'
 
 const report = {
   object: 'report',
@@ -36,9 +37,17 @@ class ReportCardState extends React.PureComponent {
   render () {
     return (
       <ReportCard
-        report={report}
-        onClick={this.handleClick()}
         cardExpanded={this.state.expandedCard}
+        onClick={this.handleClick()}
+        report={report}
+        title="Relatório financeiro"
+        subTitle={
+          <div>
+            Período: {moment(report.data.created_at).format('DD/MM/YYYY')}
+            até {moment(report.data.updated_at).format('DD/MM/YYYY')} |
+            Criado: {moment(report.created_at).format('DD/MM/YYYY')}
++         </div>
+        }
       />
 
     )
