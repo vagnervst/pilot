@@ -65,7 +65,7 @@ const getDefaultColumns = ({ t }) => ([
                 {t('components.models.recipient.automatic_anticipation_enabled')}
               </span>
               <strong>
-                {data.automatic_anticipation_enabled ? 'Sim' : 'Não'}
+                {t(`components.models.recipient.automatic_anticipation_enabled_boolean.${data.automatic_anticipation_enabled}`)}
               </strong>
             </Row>
             <Row>
@@ -117,7 +117,7 @@ const getDefaultColumns = ({ t }) => ([
                 {t('components.models.recipient.transfer_enabled')}
               </span>
               <strong>
-                {data.transfer_enabled ? 'Sim' : 'Não' }
+                {t(`components.models.recipient.transfer_enabled_boolean.${data.transfer_enabled}`)}
               </strong>
             </Row>
             <Row>
