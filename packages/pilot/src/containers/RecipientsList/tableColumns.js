@@ -156,6 +156,9 @@ const getDefaultColumns = ({ t }) => ([
     ),
   },
   {
+    aggregationRenderer: null,
+    aggregationTitle: null,
+    aggregator: null,
     align: 'center',
     isAction: true,
     orderable: false,
@@ -168,9 +171,6 @@ const getDefaultColumns = ({ t }) => ([
       </Button>
     ),
     title: t('components.models.recipient.details'),
-    aggregator: null,
-    aggregationRenderer: null,
-    aggregationTitle: null,
   },
 ])
 
