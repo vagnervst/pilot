@@ -25,6 +25,10 @@ import {
   flatten,
   isEmpty,
   isNil,
+  ifElse,
+  identity,
+  is,
+  of,
   join,
   mergeDeepLeft,
   pipe,
@@ -81,11 +85,20 @@ class Filters extends Component {
     this.setState({ query })
   }
 
-  renderChildrenInput (input, index) {
-    return React.cloneElement(input, {
-      disabled: this.props.disabled,
-      key: `${input.props.name}-${index}`,
-    })
+  renderChildrenInput (children) {
+    const ensureArray = ifElse(
+      is(Array),
+      identity,
+      of
+    )
+
+    const render = (input, index) =>
+      React.cloneElement(input, {
+        disabled: this.props.disabled,
+        key: `${input.props.name}-${index}`,
+      })
+
+    return ensureArray(children).map(render)
   }
 
   renderToolbar () {
@@ -106,7 +119,7 @@ class Filters extends Component {
 
     return (
       <CardActions>
-        {children.map(this.renderChildrenInput)}
+        {this.renderChildrenInput(children)}
         {!isNilOrEmpty(options) &&
           <Button
             disabled={this.props.disabled}
