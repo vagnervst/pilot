@@ -31,7 +31,6 @@ import {
 import { requestLogout } from '../../Account/actions'
 
 import dateSelectorPresets from '../../../models/dateSelectorPresets'
-import filterOptions from '../../../models/transactionFilterOptions'
 import RecipientsList from '../../../containers/RecipientsList'
 
 const mapStateToProps = ({
@@ -322,7 +321,7 @@ class RecipientsSearch extends React.Component {
         count={0}
         dateSelectorPresets={dateSelectorPresets}
         expandedRows={expandedRows}
-        filterOptions={filterOptions}
+        filterOptions={[]}
         loading={loading}
         onChangeViewMode={this.handleViewModeChange}
         onChartsCollapse={this.handleChartsCollapse}
