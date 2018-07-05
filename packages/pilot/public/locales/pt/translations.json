@@ -881,6 +881,7 @@
         "date_updated": "Data da atualização",
         "details": "Detalhes",
         "id": "Id do Recebedor",
+        "show_details": "Ver Detalhes",
         "status_of": {
           "active": "Ativo",
           "affiliation": "Em Afiliação",
