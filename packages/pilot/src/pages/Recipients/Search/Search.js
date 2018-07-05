@@ -39,17 +39,10 @@ const mapStateToProps = ({
   recipients: { loading, query },
 }) => ({ client, loading, query })
 
-const mapDispatchToProps = dispatch => ({
-  onRequestSearch: (query) => {
-    dispatch(requestSearch(query))
-  },
-
-  onReceiveSearch: ({ query }) => {
-    dispatch(receiveSearch({ query }))
-  },
-  onRequestSearchFail: (error) => {
-    dispatch(requestLogout(error))
-  },
+const mapDispatchToProps = ({
+  onRequestSearch: requestSearch,
+  onReceiveSearch: receiveSearch,
+  onRequestSearchFail: requestLogout,
 })
 
 const enhanced = compose(
