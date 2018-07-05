@@ -164,7 +164,7 @@ const getDefaultColumns = ({ t }) => ([
         fill="outline"
         onClick={() => (index)}
       >
-        VER DETALHES
+        {t('components.models.recipient.show_details')}
       </Button>
     ),
     title: t('components.models.recipient.details'),
