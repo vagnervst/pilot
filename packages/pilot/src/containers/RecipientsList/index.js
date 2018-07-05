@@ -22,7 +22,7 @@ import {
   Table,
 } from 'former-kit'
 
-import RecipientsFilter from '../RecipientsFilter'
+import Filter from '../Filter'
 import tableColumns from './tableColumns'
 
 const RecipientsList = ({
@@ -58,7 +58,7 @@ const RecipientsList = ({
           desk={12}
           tv={12}
         >
-          <RecipientsFilter
+          <Filter
             disabled={loading}
             onChange={onFilterChange}
             onClear={onFilterClear}
@@ -71,7 +71,7 @@ const RecipientsList = ({
               name="search"
               placeholder={t('pages.recipients.text_search_placeholder')}
             />
-          </RecipientsFilter>
+          </Filter>
         </Col>
         <Col
           palm={12}
