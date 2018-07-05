@@ -22,7 +22,7 @@ import getColumnFormatter from '../../../formatters/columnTranslator'
 
 const mapStateToProps = ({
   account: { client },
-  transactions: { loading, query },
+  recipients: { loading, query },
 }) => ({ client, loading, query })
 
 const mapDispatchToProps = dispatch => ({
