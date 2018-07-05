@@ -28,7 +28,6 @@ const items = [
 ]
 
 const report = {
-  object: 'report',
   id: 'rep_fjh9eevpv00031uo7st5nscqc',
   status: 'ready',
   type: 'plans',

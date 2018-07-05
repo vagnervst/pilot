@@ -61,7 +61,6 @@ ReportCard.propTypes = {
       created_at: PropTypes.instanceOf(moment),
       updated_at: PropTypes.instanceOf(moment),
     }).isRequired,
-    object: PropTypes.string,
     id: PropTypes.string,
     status: PropTypes.string,
     url: PropTypes.string,
