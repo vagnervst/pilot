@@ -144,9 +144,7 @@ class RecipientsSearch extends React.Component {
       selectedRows: [],
     })
 
-    const buildSearchQuery = pipe(
-      qs.stringify
-    )
+    const buildSearchQuery = qs.stringify
 
     this.props.history.push({
       pathname: 'recipients',
