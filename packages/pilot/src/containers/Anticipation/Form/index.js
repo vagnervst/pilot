@@ -112,11 +112,15 @@ class AnticipationFormContainer extends Component {
       minimum,
       onCancel,
       onConfirm,
-      timeframe,
       requested,
       t,
+      timeframe,
       transferCost,
     } = this.props
+    const {
+      dates,
+      hasErrors,
+    } = this.state
 
     const unit = t('currency_symbol')
 
@@ -171,7 +175,7 @@ class AnticipationFormContainer extends Component {
             <Card>
               <Form
                 anticipationInfo={renderInfo(t('pages.anticipation.date.advise'))}
-                dates={this.state.dates}
+                dates={dates}
                 isAutomaticTransfer={isAutomaticTransfer}
                 isValidDay={isValidDay}
                 loading={loading}
@@ -179,10 +183,10 @@ class AnticipationFormContainer extends Component {
                 minimum={minimum}
                 onChangeDate={this.handleDateChange}
                 onSubmit={this.handleCalculateSubmit}
-                timeframe={timeframe}
                 periodInfo={renderInfo(t('pages.anticipation.period.advise'))}
                 requested={requested}
                 t={t}
+                timeframe={timeframe}
               />
             </Card>
           </Col>
@@ -293,7 +297,7 @@ class AnticipationFormContainer extends Component {
               </CardContent>
               <CardActions>
                 <Button
-                  disabled={loading || this.state.hasErrors}
+                  disabled={loading || hasErrors}
                   fill="outline"
                   onClick={onCancel}
                   type="button"
@@ -301,7 +305,7 @@ class AnticipationFormContainer extends Component {
                   {t('pages.anticipation.cancel')}
                 </Button>
                 <Button
-                  disabled={loading || this.state.hasErrors}
+                  disabled={loading || hasErrors}
                   onClick={onConfirm}
                   type="button"
                 >
@@ -340,9 +344,9 @@ AnticipationFormContainer.propTypes = {
   onCalculateSubmit: PropTypes.func.isRequired,
   onCancel: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
-  timeframe: PropTypes.oneOf(['end', 'start']),
   requested: PropTypes.number.isRequired,
   t: PropTypes.func.isRequired,
+  timeframe: PropTypes.oneOf(['end', 'start']),
   transferCost: PropTypes.number.isRequired,
 }
 

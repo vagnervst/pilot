@@ -25,14 +25,10 @@ import IconCalendar from 'emblematic-icons/svg/Calendar32.svg'
 import CurrencyInput from '../../../components/CurrencyInput'
 import formatCurrency from '../../../formatters/currency'
 import greaterThanValidation from '../../../validation/greaterThan'
-import lessThanOrEqualValidation from '../../../validation/lessThanOrEqual'
+import lessThanValidation from '../../../validation/lessThan'
 import numberValidation from '../../../validation/number'
 import requiredValidation from '../../../validation/required'
 import style from './style.css'
-
-const isRequired = t => requiredValidation(t('pages.anticipation.required_error'))
-
-const isNumber = t => numberValidation(t('pages.refund.number'))
 
 const validateDate = (t, isValidDay) => pipe(
   propOr(null, 'start'),
@@ -69,10 +65,10 @@ const AnticipationForm = ({
     validation={{
       date: validateDate(t, isValidDay),
       requested: [
-        isRequired(t),
-        isNumber(t),
+        requiredValidation(t('pages.anticipation.required_error')),
+        numberValidation(t('pages.refund.number')),
         greaterThanValidation(maximum, t('pages.anticipation.maximum_error')),
-        lessThanOrEqualValidation(minimum, t('pages.anticipation.minimum_error')),
+        lessThanValidation(minimum, t('pages.anticipation.minimum_error')),
       ],
     }}
     onSubmit={onSubmit}
@@ -139,10 +135,11 @@ const AnticipationForm = ({
                 disabled={loading}
                 renderer={props => (
                   <CurrencyInput
-                    max={maximum}
+                    max={99999999999}
                     {...props}
                   />
                 )}
+                type="text"
               />
             </Col>
             <Col>

@@ -4,6 +4,9 @@ import moment from 'moment'
 import {
   complement,
   contains,
+  last,
+  pipe,
+  split,
 } from 'ramda'
 import AnticipationForm from '../../../../src/containers/Anticipation/Form'
 import Section from '../../../Section'
@@ -35,13 +38,6 @@ const defaultState = {
   transferCost: 67,
 }
 
-const getRandomInt = (min, max) => {
-  const ceil = Math.ceil(min)
-  const floor = Math.floor(max)
-  return Math.floor(Math.random() * (floor - ceil)) + ceil
-}
-
-
 const isWeekendDay = date =>
   date && date.weekday && contains(date.weekday(), [0, 6])
 
@@ -66,9 +62,13 @@ class AnticipationFormState extends Component {
     const {
       cost,
       max,
+      min,
       transferCost,
     } = this.state
-    const approximateRequested = getRandomInt(requested, max)
+    let approximateRequested = requested === max ? requested : requested - 100
+    approximateRequested = approximateRequested < min
+      ? requested
+      : approximateRequested
 
     this.setState({
       amount: (approximateRequested - (cost + transferCost)),
@@ -128,7 +128,7 @@ class AnticipationFormState extends Component {
           onCancel={this.handleCancel}
           onConfirm={this.handleConfirm}
           requested={Number(requested)}
-          t={t => t}
+          t={pipe(split('.'), last)}
           timeframe={timeframe}
           transferCost={transferCost}
         />
