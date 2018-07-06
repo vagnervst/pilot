@@ -15,11 +15,15 @@ const SidebarSections = ({
         title,
         value,
       }) => (
-        <li key={title}>
+        <li
+          key={title}
+          className={style.item}
+        >
           <span className={style.title}>{title}</span>
           <div className={style.value}>{value}</div>
           {actionTitle &&
             <Button
+              className={style.action}
               onClick={action}
               size="tiny"
             >
