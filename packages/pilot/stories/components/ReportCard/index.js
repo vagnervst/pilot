@@ -5,7 +5,6 @@ import {
   Popover,
   PopoverMenu,
 } from 'former-kit'
-import moment from 'moment'
 import { action } from '@storybook/addon-actions'
 
 import DownloadIcon from 'emblematic-icons/svg/Download32.svg'
