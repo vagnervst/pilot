@@ -88,7 +88,7 @@ storiesOf('Components', module)
   .add('Balance summary', () => (
     <BalanceSummary />
   ))
-  .add('ReportCard', () => (
+  .add('Report card', () => (
     <ReportCardState />
   ))
 
