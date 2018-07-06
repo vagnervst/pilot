@@ -78,7 +78,7 @@ const renderActions = (report) => {
         content={
           <Fragment>
             <PopoverContent>
-              <strong>Teste</strong>
+              <strong>Exportar para:</strong>
             </PopoverContent>
             <PopoverMenu items={items} />
           </Fragment>
