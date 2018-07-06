@@ -73,25 +73,23 @@ const renderActions = (report) => {
         onClick={action('delete')}
         size="default"
       />
-      <Fragment>
-        <Popover
-          content={
-            <Fragment>
-              <div>
-                <strong>Teste</strong>
-              </div>
-              <PopoverMenu items={items} />
-            </Fragment>
-          }
-        >
-          <Button
-            fill="outline"
-            icon={<DownloadIcon width={16} height={16} />}
-            onClick={action('download')}
-            size="default"
-          />
-        </Popover>
-      </Fragment>
+      <Popover
+        content={
+          <Fragment>
+            <div>
+              <strong>Teste</strong>
+            </div>
+            <PopoverMenu items={items} />
+          </Fragment>
+        }
+      >
+        <Button
+          fill="outline"
+          icon={<DownloadIcon width={16} height={16} />}
+          onClick={action('download')}
+          size="default"
+        />
+      </Popover>
     </Fragment>
   )
 }
