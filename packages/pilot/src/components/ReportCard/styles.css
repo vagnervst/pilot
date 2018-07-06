@@ -1,0 +1,10 @@
+.reportDetails {
+  color: #757575;
+  font-size: 13px;
+
+  & span {
+    display: block;
+    color: #a0a0a0;
+  }
+}
+

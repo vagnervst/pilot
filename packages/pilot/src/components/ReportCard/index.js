@@ -8,6 +8,7 @@ import {
 } from 'former-kit'
 import moment from 'moment'
 import reportStatusLegend from '../../models/reportStatusLegend'
+import style from './styles.css'
 
 class ReportCard extends React.Component {
   constructor () {
@@ -20,7 +21,7 @@ class ReportCard extends React.Component {
   render () {
     const {
       report,
-      subTitle,
+      subtitle,
       title,
       actions,
     } = this.props
@@ -39,13 +40,13 @@ class ReportCard extends React.Component {
           onClick={
             () => this.setState({ cardExpanded: !this.state.cardExpanded })
           }
-          subtitle={subTitle}
+          subtitle={subtitle}
           title={title}
         />
         {this.state.cardExpanded &&
-          <CardContent>
-            Filtros
-            <p>Status: {report.status}</p>
+          <CardContent className={style.reportDetails}>
+            <span>Filtros</span>
+            Status: {reportStatusLegend[report.status].text}
           </CardContent>
         }
       </CardSection>
@@ -68,8 +69,8 @@ ReportCard.propTypes = {
     created_at: PropTypes.instanceOf(moment),
     updated_at: PropTypes.instanceOf(moment),
   }).isRequired,
-  subTitle: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.node.isRequired,
+  title: PropTypes.node.isRequired,
 }
 
 export default ReportCard

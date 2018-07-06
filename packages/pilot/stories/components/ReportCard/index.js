@@ -5,12 +5,13 @@ import {
   Popover,
   PopoverMenu,
 } from 'former-kit'
-import ReportCard from '../../../src/components/ReportCard'
 import moment from 'moment'
+import { action } from '@storybook/addon-actions'
+
 import DownloadIcon from 'emblematic-icons/svg/Download32.svg'
 import TrashIcon from 'emblematic-icons/svg/Trash32.svg'
 import ReprocessIcon from 'emblematic-icons/svg/Reprocess32.svg'
-import { action } from '@storybook/addon-actions'
+import ReportCard from '../../../src/components/ReportCard'
 
 const items = [
   {
@@ -27,7 +28,7 @@ const items = [
   },
 ]
 
-const report = {
+const reportData = {
   id: 'rep_fjh9eevpv00031uo7st5nscqc',
   status: 'ready',
   type: 'plans',
@@ -98,7 +99,7 @@ class ReportCardState extends React.PureComponent {
   constructor (props) {
     super(props)
     this.state = {
-      ...report,
+      ...reportData,
       expandedCard: false,
     }
 
@@ -113,21 +114,15 @@ class ReportCardState extends React.PureComponent {
 
   render () {
     return (
-     <Card>
-       <ReportCard
-         actions={renderActions(report)}
-         cardExpanded={this.state.expandedCard}
-         report={report}
-         title="Relatório financeiro"
-         subTitle={
-           <div>
-             Período: {moment(report.data.created_at).format('DD/MM/YYYY')}
-             até {moment(report.data.updated_at).format('DD/MM/YYYY')} |
-             Criado: {moment(report.created_at).format('DD/MM/YYYY')}
-+          </div>
-         }
-       />
-     </Card>
+      <Card>
+        <ReportCard
+          actions={renderActions(reportData)}
+          cardExpanded={this.state.expandedCard}
+          report={reportData}
+          title="Carta de circularização 2017"
+          subtitle="Período: 01/01/2017 a 01/06/2017   |   Criado em 10/05/2018"
+        />
+      </Card>
     )
   }
 }
