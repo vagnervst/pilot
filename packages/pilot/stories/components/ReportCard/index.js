@@ -3,6 +3,7 @@ import {
   Button,
   Card,
   Popover,
+  PopoverContent,
   PopoverMenu,
 } from 'former-kit'
 import { action } from '@storybook/addon-actions'
@@ -76,9 +77,9 @@ const renderActions = (report) => {
       <Popover
         content={
           <Fragment>
-            <div>
+            <PopoverContent>
               <strong>Teste</strong>
-            </div>
+            </PopoverContent>
             <PopoverMenu items={items} />
           </Fragment>
         }
