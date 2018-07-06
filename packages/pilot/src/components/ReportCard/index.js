@@ -14,7 +14,7 @@ class ReportCard extends React.Component {
   constructor () {
     super()
     this.state = {
-      cardExpanded: false,
+      collapsed: false,
     }
   }
 
@@ -29,7 +29,7 @@ class ReportCard extends React.Component {
       <CardSection>
         <CardSectionDoubleLineTitle
           actions={actions}
-          collapsed={!this.state.cardExpanded}
+          collapsed={!this.state.collapsed}
           icon={
             <Legend
               color={reportStatusLegend[report.status].color}
@@ -38,12 +38,12 @@ class ReportCard extends React.Component {
             />
           }
           onClick={
-            () => this.setState({ cardExpanded: !this.state.cardExpanded })
+            () => this.setState({ collapsed: !this.state.collapsed })
           }
           subtitle={subtitle}
           title={title}
         />
-        {this.state.cardExpanded &&
+        {this.state.collapsed &&
           <CardContent className={style.reportDetails}>
             <span>Filtros</span>
             Status: {reportStatusLegend[report.status].text}
