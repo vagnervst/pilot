@@ -57,17 +57,17 @@ class ReportCard extends React.Component {
 ReportCard.propTypes = {
   actions: PropTypes.func.isRequired,
   report: PropTypes.shape({
+    created_at: PropTypes.instanceOf(moment),
     data: PropTypes.shape({
       company_id: PropTypes.string,
       created_at: PropTypes.instanceOf(moment),
       updated_at: PropTypes.instanceOf(moment),
     }).isRequired,
     id: PropTypes.string,
-    status: PropTypes.string,
-    url: PropTypes.string,
     type: PropTypes.string,
-    created_at: PropTypes.instanceOf(moment),
+    status: PropTypes.string,
     updated_at: PropTypes.instanceOf(moment),
+    url: PropTypes.string,
   }).isRequired,
   subtitle: PropTypes.node.isRequired,
   title: PropTypes.node.isRequired,
