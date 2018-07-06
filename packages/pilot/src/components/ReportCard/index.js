@@ -46,7 +46,7 @@ class ReportCard extends React.Component {
         {this.state.collapsed &&
           <CardContent className={style.reportDetails}>
             <span>Filtros</span>
-            Status: {reportStatusLegend[report.status].text}
+            <span>Status: {reportStatusLegend[report.status].text}</span>
           </CardContent>
         }
       </CardSection>
