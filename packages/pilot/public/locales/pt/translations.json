@@ -468,6 +468,33 @@
       "view_transaction": "Visualizar transação",
       "wrong_password": "Senha inválida"
     },
+    "report": {
+      "at": "às",
+      "clear_filters": "Limpar filtros",
+      "confirm_filters": "Filtrar",
+      "find_by": "Filtre pelo nome do relatório",
+      "items_per_page": "itens por página",
+      "no_content_found": "Não foram encontrados resultados para essa busca.",
+      "of": "de",
+      "new_report": "Novo relatório",
+      "period_summary": "Resumo de:",
+      "reports": "Relatórios",
+      "reports_number": "Nº de relatórios:",
+      "title": "Relatórios", 
+      "try_filter_again": "Tente novamente com outros filtros.",
+      "report": {
+        "created_at": "Criado em",
+        "status": "Status",
+        "id": "ID (ID do relatório)",
+        "filters": "Filtros",
+        "export_to": "Exportar para",
+        "type_files": {
+          "pdf":"PDF",
+          "excel": "Excel",
+          "csv":"CSV"
+        }
+      }
+    },
     "reprocess": {
       "submit": "Reprocessar transação",
       "confirmation": "Confirmação",
