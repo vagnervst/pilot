@@ -183,3 +183,13 @@
   }
 }
 
+.grid {
+  display: grid;
+  grid-row-gap: 0px;
+  justify-items: center;
+}
+
+.icon {
+  width: 152px;
+  height: 152px;
+}

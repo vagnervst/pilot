@@ -102,6 +102,7 @@
     "company": "Empresa",
     "confirmation": "você receberá um e-mail com as instruções para a ativação de sua conta",
     "confirmation_emphasis": "pronto!",
+    "confirmation_call": "Comece já a usar nossa dashboard.",
     "invalid_email_emphasis": "e-mail de cadastro inválido.",
     "invalid_email_error": "Para mais informações entre em contato com o administrador da sua conta.",
     "login_action": "faça login",
