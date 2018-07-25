@@ -26,6 +26,7 @@ import BalanceTotalDisplay from './BalanceTotalDisplay'
 import BalanceSummary from './BalanceSummary'
 import SidebarSections from './SidebarSections'
 import SidebarSummary from './SidebarSummary'
+import MessageAlert from './MessageAlert'
 
 storiesOf('Components', module)
   .add('Copy button', () => (
@@ -102,4 +103,7 @@ storiesOf('Components', module)
   ))
   .add('Transfer Error', () => (
     <TransferError />
+  ))
+  .add('Message Alert', () => (
+    <MessageAlert />
   ))
