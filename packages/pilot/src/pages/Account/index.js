@@ -19,7 +19,7 @@ import { translate } from 'react-i18next'
 
 import Account from '../../containers/Account'
 import UnregisteredPresentation from './UnregisteredPresentation'
-import InvalidEmailError from './SignUp/InvalidEmailError'
+import Failure from './SignUp/Failure'
 import Login from './Login'
 import PasswordRecovery from './PasswordRecovery'
 import PasswordRecoveryConfirmation from './PasswordRecovery/Confirmation'
@@ -68,7 +68,7 @@ const AccountArea = ({ t, history: { location } }) => (
         />
         <Route
           path="/account/signup/error"
-          component={InvalidEmailError}
+          component={Failure}
         />
         <Route
           path="/account/signup"

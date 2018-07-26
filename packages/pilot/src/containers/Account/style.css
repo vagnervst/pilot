@@ -1,3 +1,5 @@
+@import 'former-kit-skin-pagarme/dist/styles/colors/light.css';
+
 .container {
   height: 100vh;
   background-color: #f9f9f9;
@@ -181,6 +183,11 @@
     width: 100%;
     box-sizing: border-box;
   }
+}
+
+.alertTitle {
+  color: var(--color-light-salmon-120);
+  margin: 0;
 }
 
 .grid {

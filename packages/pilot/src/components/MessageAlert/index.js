@@ -11,6 +11,7 @@ import {
 const MessageAlert = ({
   actionCall,
   icon,
+  relevance,
   message,
   onActionClick,
   title,
@@ -35,6 +36,7 @@ const MessageAlert = ({
       <Col align="center">
         <Button
           fill="gradient"
+          relevance={relevance}
           onClick={onActionClick}
         >
           {actionCall}
@@ -48,11 +50,15 @@ MessageAlert.propTypes = {
   actionCall: PropTypes.string.isRequired,
   icon: PropTypes.element.isRequired,
   title: PropTypes.element.isRequired,
-  message: PropTypes.string.isRequired,
+  relevance: PropTypes.oneOf([
+    'high', 'normal', 'low',
+  ]),
+  message: PropTypes.element.isRequired,
   onActionClick: PropTypes.func,
 }
 
 MessageAlert.defaultProps = {
+  relevance: 'normal',
   onActionClick: () => {},
 }
 
